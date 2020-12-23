@@ -2,6 +2,7 @@ package com.bdg;
 
 /**
  * @author Tigran
+ * @author of changes Tigran Iskandaryan
  *
  */
 public class Main {
