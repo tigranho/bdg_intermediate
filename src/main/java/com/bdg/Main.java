@@ -9,6 +9,7 @@ public class Main {
 
         System.out.println("Test");
         System.out.println("Test Martin");
+        System.out.println("Test Martin");
     }
 
 }
