@@ -1,7 +1,7 @@
 package com.bdg;
 
 /**
- * @author Tigran
+ * @author Artur
  */
 public class Main {
 
