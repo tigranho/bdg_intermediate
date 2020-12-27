@@ -156,6 +156,12 @@ class Address
         this.street = street;
     }
 
+    @Override
+    public String toString()
+    {
+        return this.country+"/"+this.city+"/"+this.street;
+    }
+
 }
 
 
@@ -175,6 +181,11 @@ public class Main
         employee.setAddress(address);
 
         System.out.println(employee);
+
+        employee = null;
+
+        System.out.println(employee);
+        System.out.println(address);
 
     }
 }
