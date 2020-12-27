@@ -65,38 +65,48 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Address address = new Address();
-        address.setCountry("Armenia");
-        address.setCity("Yerevan");
-        address.setStreet("Nairi Zaryan");
+//        Address address = new Address();
+//        address.setCountry("Armenia");
+//        address.setCity("Yerevan");
+//        address.setStreet("Nairi Zaryan");
+//
+//        Employee employee = new Employee();
+//        employee.setId("001");
+//        employee.setFirstName("Karapet");
+//        employee.setLastName("Grigoryan");
+//        employee.setAddress(address);
+//
+//        System.out.println(employee);
+//
+//        employee = null;
+//
+//        System.out.println(employee);
+//        System.out.println(address+"\n");
+//
+//        Building building = new Building();
+//        building.setName("Home");
+//        building.setFloors(2);
+//        building.getAddress().setCountry("Armenia");
+//        building.getAddress().setCity("Yerevan");
+//        building.getAddress().setStreet("Sayat Nova");
+//        System.out.println(building);
+//        building = null;
+//
+//        if(building != null)
+//        {
+//            System.out.println(building.getAddress());
+//        }
+//        System.out.println("Address does not exist");
 
-        Employee employee = new Employee();
-        employee.setId("001");
-        employee.setFirstName("Karapet");
-        employee.setLastName("Grigoryan");
-        employee.setAddress(address);
+        SingletonFile.getSingletonFile().addFileInfo("first line");
+        SingletonFile.getSingletonFile().addFileInfo("second line");
+        SingletonFile.getSingletonFile().addFileInfo("third line");
 
-        System.out.println(employee);
+        SingletonFile.getSingletonFile().showFile();
 
-        employee = null;
-
-        System.out.println(employee);
-        System.out.println(address+"\n");
-
-        Building building = new Building();
-        building.setName("Home");
-        building.setFloors(2);
-        building.getAddress().setCountry("Armenia");
-        building.getAddress().setCity("Yerevan");
-        building.getAddress().setStreet("Sayat Nova");
-        System.out.println(building);
-        building = null;
-
-        if(building != null)
-        {
-            System.out.println(building.getAddress());
-        }
-        System.out.println("Address does not exist");
-
+        //to be sure that we have the same object every time
+        System.out.println(SingletonFile.getSingletonFile().toString());
+        System.out.println(SingletonFile.getSingletonFile().toString());
+        System.out.println(SingletonFile.getSingletonFile().toString());
     }
 }
