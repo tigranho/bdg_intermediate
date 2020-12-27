@@ -62,7 +62,7 @@ class Person
 }
 
 /**
- * Class Description: Simple Composition and Aggregation example
+ * Class Description: Simple Aggregation example
  */
 class Employee
 {
@@ -122,6 +122,52 @@ class Employee
     public String toString()
     {
         return "Employee: [id: "+this.id+", first name: "+this.firstName+", last name: "+this.lastName+", address: "+this.address+"]";
+    }
+}
+
+/**
+ * Class Description: Simple Composition example
+ */
+class Building
+{
+    private String name;
+    private int floors;
+    private Address address;
+
+    public Building()
+    {
+        address = new Address();
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public String getName()
+    {
+        return this.name;
+    }
+
+    public void setFloors(int floors)
+    {
+        this.floors = floors;
+    }
+
+    public int getFloors()
+    {
+        return this.floors;
+    }
+
+    public Address getAddress()
+    {
+        return this.address;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Building name: "+this.name+", This building has "+this.floors+" floors"+", it is located in "+this.address;
     }
 }
 
@@ -185,7 +231,22 @@ public class Main
         employee = null;
 
         System.out.println(employee);
-        System.out.println(address);
+        System.out.println(address+"\n");
+
+        Building building = new Building();
+        building.setName("Home");
+        building.setFloors(2);
+        building.getAddress().setCountry("Armenia");
+        building.getAddress().setCity("Yerevan");
+        building.getAddress().setStreet("Sayat Nova");
+        System.out.println(building);
+        building = null;
+
+        if(building != null)
+        {
+            System.out.println(building.getAddress());
+        }
+        System.out.println("Address does not exist");
 
     }
 }
