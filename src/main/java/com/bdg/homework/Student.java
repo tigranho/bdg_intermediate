@@ -41,4 +41,11 @@ public class Student implements java.io.Serializable{
     public void setAge(int age) {
         this.age = age;
     }
+
+    public static void main(String[] args) {
+        Student student = new Student();
+        student.setId(1);
+        student.setName("Ara");
+        student.setAge(24);
+    }
 }

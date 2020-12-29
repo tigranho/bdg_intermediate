@@ -39,4 +39,14 @@ public class Employee {
     public void setPassport(Passport passport) {
         this.passport = passport;
     }
+    public static void main(String[] args) {
+        Passport passport = new Passport(15478,"AN021547896");
+        Employee employee = new Employee(1,"Armen",passport);
+        System.out.println(employee.getPassport().getGivenBy());
+        System.out.println(employee.getPassport().getNumber());
+        System.out.println(employee.getName());
+        employee = null;
+        // employee now is null, but passport exist
+        System.out.println(passport.getNumber());
+    }
 }
