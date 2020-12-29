@@ -6,7 +6,12 @@ package com.bdg;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Test");
+        String str = "AAAA";
+
+
+        System.out.println("Hello World");
+
+        Object obj = new Object();
     }
 
 }
