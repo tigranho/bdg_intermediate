@@ -2,7 +2,7 @@ package com.bdg;
 
 import java.io.Serializable;
 
-public class Beans implements Serializable {
+public class Beans implements  Serializable {
     private int id;
     private String name;
 

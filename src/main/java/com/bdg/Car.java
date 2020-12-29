@@ -7,7 +7,7 @@ public class Car {
 }
 
 //Is a Lexus Car
-class Lexus extends Car {
+class Lexus extends  Car {
    private Keys keys;
 public  Lexus(){
     this.keys=new Keys();
