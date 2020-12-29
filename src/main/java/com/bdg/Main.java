@@ -1,15 +1,13 @@
 package com.bdg;
 
-import java.sql.SQLOutput;
 
 /**
- * @author Tigran
+ * @author Ruzanna
  */
+
+
 public class Main {
-
     public static void main(String[] args) {
-
-        System.out.println("Test");
     }
 
 }
