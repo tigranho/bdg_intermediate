@@ -10,7 +10,7 @@ public class User {
     private String username;
     private Role role;
 
-    public User(int id, String firstName, String lastName, String username,long salary) {
+    public User(int id, String firstName, String lastName, String username, long salary) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -33,23 +33,23 @@ public class User {
         return role;
     }
 
-     int getId() {
+    int getId() {
         return id;
     }
 
-     void setId(int id) {
+    void setId(int id) {
         this.id = id;
     }
 
-     String getFirstName() {
+    String getFirstName() {
         return firstName;
     }
 
-     void setFirstName(String firstName) {
+    void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-     String getLastName() {
+    String getLastName() {
         return lastName;
     }
 
