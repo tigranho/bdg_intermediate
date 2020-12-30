@@ -1,4 +1,4 @@
-package examples_from_the_book.chapter_2._1design_an_interfaces;
+package examples.from.the.book.chapter_2._1design.an.interfaces;
 
 public interface Walk {
     boolean isQuadruped();

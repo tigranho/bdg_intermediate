@@ -1,4 +1,4 @@
-package examples_from_the_book.chapter_2._4implementing_polimorphism;
+package examples.from.the.book.chapter_2._4implementing.polimorphism;
 
 public interface LivesInOcean {
     public void makeSound();
