@@ -9,6 +9,7 @@ public class Factory {
         shape2.draw();
         Shape1 shape3 = shapeFactory.getShape("SQUARE");
         shape3.draw();
+        System.out.println();
     }
 }
 interface Shape1 {

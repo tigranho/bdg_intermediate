@@ -11,7 +11,7 @@ public class Prototype {
         System.out.print("Enter Employee Id: ");
         int eid=Integer.parseInt(br.readLine());
         System.out.print("\n");
-
+        System.out.println();
         System.out.print("Enter Employee Name: ");
         String ename=br.readLine();
         System.out.print("\n");

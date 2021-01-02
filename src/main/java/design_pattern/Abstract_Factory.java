@@ -13,6 +13,7 @@ public class Abstract_Factory {
         shape3.draw();
         Shape shape4 = shapeFactory1.getShape("SQUARE");
         shape4.draw();
+        System.out.println();
     }
 }
 
