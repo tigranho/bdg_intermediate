@@ -1,5 +1,8 @@
 package design_principle;
 
+import java.awt.*;
+import java.util.ArrayList;
+
 public class Aggregation {
     public static void main(String[] args) {
         Address ad=new Address("Armenia","Artashat","Shirvanzade",14);
@@ -11,6 +14,7 @@ public class Aggregation {
         System.out.println(st.studnet_address.city);
         System.out.println(st.studnet_address.street);
         System.out.println(st.studnet_address.home_number);
+
     }
 }
 class Address {
