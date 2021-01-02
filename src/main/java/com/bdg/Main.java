@@ -1,7 +1,7 @@
 package com.bdg;
 
 
-import java.awt.*;
+import CustomDataTypes.CustomArrayList;
 
 /**
  * @author Ruzanna
@@ -10,12 +10,10 @@ import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
-        LlamaTrainer trainer = new LlamaTrainer();
-        HayStorage hayStorage = HayStorage.getInstance();
-        trainer.feedLlamas(20);
-        System.out.println(hayStorage.getHayQuantity());
-        trainer.feedLlamas(10);
-        System.out.println(hayStorage.getHayQuantity());
+        CustomArrayList<Integer> arr = new CustomArrayList<>(2);
+        System.out.println(arr);
+        arr.add(null);
+        System.out.println(arr);
     }
 
 }
