@@ -12,10 +12,10 @@ public class CustomArrayList<E> implements List<E> {
         array = (E[]) new Object[DEF_CAPACITY];
     }
 
-    public CustomArrayList(int init) {
-        if (init > 0) {
-            array = (E[]) new Object[init];
-        } else if (init == 0) {
+    public CustomArrayList(int initSize) {
+        if (initSize > 0) {
+            array = (E[]) new Object[initSize];
+        } else if (initSize == 0) {
             array = (E[]) new Object[DEF_CAPACITY];
         } else {
             throw new NegativeArraySizeException();
@@ -73,14 +73,10 @@ public class CustomArrayList<E> implements List<E> {
     public boolean contains(Object o) {
         if (o == null) {
             throw new NullPointerException();
+        } else if (!(o.getClass().isAssignableFrom(array[0].getClass()))) {
+            throw new ClassCastException();
         }
-        // Here I have to check also type of the (o)
-        for (int i = 0; i < size; i++) {
-            if (((E) o).equals(array[i])) {
-                return true;
-            }
-        }
-        return false;
+        return indexOf(o) >= 0;
     }
 
     @Override
@@ -128,12 +124,53 @@ public class CustomArrayList<E> implements List<E> {
         extendArrayIfNeeded();
         array[size] = e;
         size++;
-        return false;
+        return true;
     }
 
+    /**
+     * Removes the first occurrence of the specified element from this list,
+     * if it is present (optional operation).  If this list does not contain
+     * the element, it is unchanged.  More formally, removes the element with
+     * the lowest index {@code i} such that
+     * {@code Objects.equals(o, get(i))}
+     * (if such an element exists).  Returns {@code true} if this list
+     * contained the specified element (or equivalently, if this list changed
+     * as a result of the call).
+     *
+     * @param o element to be removed from this list, if present
+     * @return {@code true} if this list contained the specified element
+     * @throws ClassCastException            if the type of the specified element
+     *                                       is incompatible with this list
+     *                                       (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws NullPointerException          if the specified element is null and this
+     *                                       list does not permit null elements
+     *                                       (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws UnsupportedOperationException if the {@code remove} operation
+     *                                       is not supported by this list
+     */
     @Override
     public boolean remove(Object o) {
-        return false;
+        if (o == null) {
+            throw new NullPointerException();
+        } else if (!(o.getClass().isAssignableFrom(array[0].getClass()))) {
+            throw new ClassCastException();
+        }
+        int index = indexOf(o);
+        if (index >= 0) {
+            E[] array1 = (E[]) new Object[size - 1];
+            for (int i = 0, j = 0; i < size; i++) {
+                if (i != index) {
+                    array1[j] = array[i];
+                    j++;
+                }
+            }
+            size--;
+            array = array1;
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     @Override
@@ -188,7 +225,7 @@ public class CustomArrayList<E> implements List<E> {
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        return Arrays.asList(array).indexOf(o);
     }
 
     @Override
@@ -218,7 +255,8 @@ public class CustomArrayList<E> implements List<E> {
             str.append("ArrayList is Empty");
         } else {
             for (int i = 0; i < size; i++) {
-                str.append(array[i] + " ");
+                str.append(array[i]);
+                str.append(" ");
             }
         }
         return str.toString();
