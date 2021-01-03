@@ -1,7 +1,7 @@
 package com.bdg;
 
 
-import CustomDataTypes.CustomArrayList;
+import CustomDataStructures.CustomArrayList;
 
 /**
  * @author Ruzanna
