@@ -5,7 +5,7 @@ import java.util.*;
 public class CustomArrayList<E> implements List<E> {
     private E[] array;
     private int size = 0;
-    private static final int DEF_CAPACITY = 10;
+    private static final int DEF_CAPACITY = 5;
 
 
     public CustomArrayList() {
