@@ -1,4 +1,4 @@
-package com.bdg.collections.list;
+package com.bdg.collections.list.arraylist;
 
 import java.util.List;
 
