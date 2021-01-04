@@ -1,6 +1,7 @@
-package com.bdg.collections.list.arraylist.linkedlist;
+package com.bdg.collections.list.linkedlist;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class CustomLinkedListIterator<E> implements Iterable<E> {
 

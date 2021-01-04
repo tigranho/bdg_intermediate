@@ -1,6 +1,9 @@
-package com.bdg.collections.list.arraylist.linkedlist;
+package com.bdg.collections.list.linkedlist;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 
 public class MyLinkedList<T> implements List<T> {
