@@ -10,6 +10,6 @@ public class Main
     {
         CustomArrayList array1 = new CustomArrayList();
         array1.add("Argishti");
-        array1.getElement(0);
+        System.out.println(array1.getElement(0));
     }
 }
