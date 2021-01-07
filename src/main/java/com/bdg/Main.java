@@ -1,11 +1,11 @@
 package com.bdg;
 
-import com.bdg.design_pattern.factory_immutable_builder.Card;
+import com.bdg.design_pattern.immutable_builder.Card;
 import com.bdg.design_principles.LineItem;
 import com.bdg.design_principles.Person;
 import com.bdg.design_principles.Product;
-import com.bdg.design_pattern.factory_immutable_builder.Shape;
-import com.bdg.design_pattern.factory_immutable_builder.ShapeFactory;
+import com.bdg.design_pattern.factory.Shape;
+import com.bdg.design_pattern.factory.ShapeFactory;
 
 /**
  * @author Artur
