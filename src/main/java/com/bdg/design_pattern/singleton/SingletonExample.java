@@ -1,7 +1,8 @@
-package com.bdg;
+package com.bdg.design_pattern.singleton;
 
 /**
  * @author Artur
+ * Sigleton Pattern example
  */
 
 public class SingletonExample {

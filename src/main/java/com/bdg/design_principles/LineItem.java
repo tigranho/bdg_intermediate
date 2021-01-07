@@ -1,4 +1,4 @@
-package com.bdg;
+package com.bdg.design_principles;
 /**
  * @author Artur
  */

@@ -1,5 +1,16 @@
 package com.bdg;
 
+import com.bdg.custom_collections.LinkedListCustom;
+import com.bdg.design_pattern.factory_and_immutable.Card;
+import com.bdg.design_principles.LineItem;
+import com.bdg.design_principles.Person;
+import com.bdg.design_principles.Product;
+import com.bdg.design_pattern.factory_and_immutable.Shape;
+import com.bdg.design_pattern.factory_and_immutable.ShapeFactory;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 /**
  * @author Artur
  */
@@ -22,9 +33,17 @@ public class Main {
         System.out.println(item1.getQuantity());
         System.out.println(item1.getP());
         item1 = null;
-
         // Still product exist and not deleted
         System.out.println(p1);
-    }
+        //Test Factory Pattern
+        ShapeFactory shapeFactory = new ShapeFactory();
+        //get an object of Circle and call its draw method.
+        Shape shape1 = shapeFactory.getShape("CIRCLE");
+        //call draw method of Circle
+        shape1.draw();
+        //Test builder Pattern
+        Card card=new Card.CardBuilder().number(1225l).cardBuild();
+        System.out.println(card.getNumber());
 
+    }
 }
