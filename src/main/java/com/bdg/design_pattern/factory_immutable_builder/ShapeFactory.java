@@ -1,9 +1,4 @@
-package com.bdg.design_pattern.factory_and_immutable;
-
-import com.bdg.design_pattern.factory_and_immutable.Circle;
-import com.bdg.design_pattern.factory_and_immutable.Rectangle;
-import com.bdg.design_pattern.factory_and_immutable.Shape;
-import com.bdg.design_pattern.factory_and_immutable.Square;
+package com.bdg.design_pattern.factory_immutable_builder;
 
 /**
  * @author Artur

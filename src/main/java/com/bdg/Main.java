@@ -1,15 +1,11 @@
 package com.bdg;
 
-import com.bdg.custom_collections.LinkedListCustom;
-import com.bdg.design_pattern.factory_and_immutable.Card;
+import com.bdg.design_pattern.factory_immutable_builder.Card;
 import com.bdg.design_principles.LineItem;
 import com.bdg.design_principles.Person;
 import com.bdg.design_principles.Product;
-import com.bdg.design_pattern.factory_and_immutable.Shape;
-import com.bdg.design_pattern.factory_and_immutable.ShapeFactory;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
+import com.bdg.design_pattern.factory_immutable_builder.Shape;
+import com.bdg.design_pattern.factory_immutable_builder.ShapeFactory;
 
 /**
  * @author Artur

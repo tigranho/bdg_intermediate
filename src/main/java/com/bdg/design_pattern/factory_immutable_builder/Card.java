@@ -1,4 +1,4 @@
-package com.bdg.design_pattern.factory_and_immutable;
+package com.bdg.design_pattern.factory_immutable_builder;
 /**
  * @author Artur
  * Builder and Immutable Pattern example
