@@ -5,6 +5,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+
+class Test{
+    public static void main(String[] args) {
+        CustomLinkedList<Integer> list=new CustomLinkedList<>();
+        list.add(0,45);
+        list.add(1,69);
+        list.add(2,63);
+        list.remove(1);
+        System.out.println(list);
+    }
+}
 public class  CustomLinkedList<E>  implements List<E> {
 
     private static int counter;
