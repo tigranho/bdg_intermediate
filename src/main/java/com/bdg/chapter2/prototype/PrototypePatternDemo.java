@@ -5,7 +5,7 @@ package com.bdg.chapter2.prototype;
  */
 public class PrototypePatternDemo {
 
-    public static void main(String[] args) {
+/*  public static void main(String[] args) {
 
 
        Circle circle  = new Circle();
@@ -13,7 +13,7 @@ public class PrototypePatternDemo {
 
        Rectangle rectangle  = new Rectangle();
        Rectangle copyedRectangle  = (Rectangle) circle.clone();
-    }
+    }*/
 
 
 }

@@ -1,9 +1,5 @@
 package com.bdg.homework.customCollections.MyArrayList;
-
-import com.sun.scenario.effect.impl.prism.PrImage;
-
 import java.util.*;
-import java.lang.Object.*;
 import java.util.function.UnaryOperator;
 
 public class CustomArrayList implements List {
