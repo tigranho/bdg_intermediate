@@ -8,6 +8,8 @@ import com.bdg.design_principles.Product;
 import com.bdg.design_pattern.factory.Shape;
 import com.bdg.design_pattern.factory.ShapeFactory;
 
+import java.util.HashMap;
+
 /**
  * @author Artur
  */
@@ -55,8 +57,6 @@ public class Main {
         System.out.println(listCustom.getNode(0));
         listCustom.clear();
         System.out.println(listCustom.toString());
-
-
 
     }
 }
