@@ -37,7 +37,7 @@ public    class CustomArrayList<E>  implements List<E> {
 
     public  CustomArrayList( int capacity){
         if(capacity>0){
-        elements=new Object[default_capacity];}
+            elements=new Object[default_capacity];}
         else if(capacity==0){
             elements=emp_arr;
         }else{
