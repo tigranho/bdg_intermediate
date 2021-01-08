@@ -150,7 +150,7 @@ public class CustomArrayList<E> implements List<E> {
      */
     @Override
     public boolean remove(Object o) {
-        if (o == null) {
+        if (o == null){
             throw new NullPointerException();
         } else if (!isEmpty() && !(o.getClass().isAssignableFrom(array[0].getClass()))) {
             throw new ClassCastException();

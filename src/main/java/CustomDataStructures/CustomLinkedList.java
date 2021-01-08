@@ -27,21 +27,38 @@ public class CustomLinkedList<E> implements List<E> {
     private Node<E> lastNode;
     private int size = 0;
 
-
+    /**
+     * Returns the number of elements in this list.
+     *
+     * @return the number of elements in this list
+     */
     @Override
     public int size() {
         return size;
     }
 
+    /**
+     * Returns {@code true} if this list contains no elements.
+     *
+     * @return {@code true} if this list contains no elements
+     */
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
+    /**
+     * Returns {@code true} if this list contains the specified element.
+     * More formally, returns {@code true} if and only if this list contains
+     * at least one element {@code e} such that
+     * {@code Objects.equals(o, e)}.
+     *
+     * @param o element whose presence in this list is to be tested
+     * @return {@code true} if this list contains the specified element
+     */
     @Override
-
     public boolean contains(Object o) {
-        return false;
+        return indexOf(o) >= 0;
     }
 
     @Override
@@ -59,6 +76,12 @@ public class CustomLinkedList<E> implements List<E> {
         return null;
     }
 
+    /**
+     * Appends the specified element to the end of this list.
+     *
+     * @param a element to be appended to this list
+     * @return {@code true} (as specified by {@link Collection#add})
+     */
     @Override
     public boolean add(E a) {
         if (a == null) {
@@ -76,26 +99,25 @@ public class CustomLinkedList<E> implements List<E> {
         return true;
     }
 
+    /**
+     * Removes the first occurrence of the specified element from this list,
+     * if it is present.  If this list does not contain the element, it is
+     * unchanged.  More formally, removes the element with the lowest index
+     * {@code i} such that
+     * {@code Objects.equals(o, get(i))}
+     * (if such an element exists).  Returns {@code true} if this list
+     * contained the specified element (or equivalently, if this list
+     * changed as a result of the call).
+     *
+     * @param o element to be removed from this list, if present
+     * @return {@code true} if this list contained the specified element
+     */
     @Override
     public boolean remove(Object o) {
-        if (o == null) {
-            throw new NullPointerException();
-        }
-        if (size != 0 && !(o.getClass().isAssignableFrom(lastNode.element.getClass()))) {
-            throw new ClassCastException();
-        }
-        Node<E> currentNode = firstNode;
-        while (currentNode != null) {
-            if (o.equals(currentNode.element)) {
-                if(currentNode.prevReference == null){
-                    firstNode = currentNode.nextReference;
-                } else {
-                    currentNode.prevReference.nextReference = currentNode.nextReference;
-                }
-                size--;
-                return true;
-            }
-            currentNode = currentNode.nextReference;
+        int index = indexOf(o);
+        if (index >= 0) {
+            remove(index);
+            return true;
         }
         return false;
     }
@@ -106,9 +128,28 @@ public class CustomLinkedList<E> implements List<E> {
         return false;
     }
 
+    /**
+     * Appends all of the elements in the specified collection to the end of
+     * this list, in the order that they are returned by the specified
+     * collection's iterator.  The behavior of this operation is undefined if
+     * the specified collection is modified while the operation is in
+     * progress.  (Note that this will occur if the specified collection is
+     * this list, and it's nonempty.)
+     *
+     * @param c collection containing elements to be added to this list
+     * @return {@code true} if this list changed as a result of the call
+     * @throws NullPointerException if the specified collection is null
+     */
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        return false;
+        if (c == null || c.contains(null)) {
+            throw new NullPointerException();
+        }
+        Object[] o = c.toArray();
+        for (int i = 0; i < o.length; i++) {
+            add((E) o[i]);
+        }
+        return true;
     }
 
     @Override
@@ -126,19 +167,87 @@ public class CustomLinkedList<E> implements List<E> {
         return false;
     }
 
+    /**
+     * Removes all of the elements from this list.
+     * The list will be empty after this call returns.
+     */
     @Override
     public void clear() {
-
+        Node<E> currentNode = firstNode;
+        while (currentNode != null) {
+            Node<E> nextNode = currentNode.nextReference;
+            currentNode.prevReference = null;
+            currentNode.nextReference = null;
+            currentNode = nextNode;
+        }
+        firstNode = null;
+        lastNode = null;
+        size = 0;
     }
 
+    /**
+     * Returns the element at the specified position in this list.
+     *
+     * @param index index of the element to return
+     * @return the element at the specified position in this list
+     * @throws IndexOutOfBoundsException {@inheritDoc}
+     */
+    private void checkIndex(int index) {
+        if (index >= size || index < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+    }
+
+    private Node<E> getNodeByIndex(int index) {
+        Node<E> currentNode;
+        if (index < size / 2) {
+            currentNode = firstNode;
+            for (int i = 0; i <= index; i++) {
+                currentNode = currentNode.nextReference;
+            }
+        } else {
+            currentNode = lastNode;
+            for (int i = size - 1; i > index; i--) {
+                currentNode = currentNode.prevReference;
+            }
+        }
+        return currentNode;
+    }
+
+    /**
+     * Returns the element at the specified position in this list.
+     *
+     * @param index index of the element to return
+     * @return the element at the specified position in this list
+     * @throws IndexOutOfBoundsException {@inheritDoc}
+     */
     @Override
     public E get(int index) {
-        return null;
+        checkIndex(index);
+        return getNodeByIndex(index).element;
     }
 
+    /**
+     * Replaces the element at the specified position in this list with the
+     * specified element.
+     *
+     * @param index   index of the element to replace
+     * @param element element to be stored at the specified position
+     * @return the element previously at the specified position
+     * @throws IndexOutOfBoundsException {@inheritDoc}
+     */
     @Override
     public E set(int index, E element) {
-        return null;
+        if (element == null) {
+            throw new NullPointerException();
+        }
+        Node<E> currentNode;
+        E oldElement;
+        checkIndex(index);
+        currentNode = getNodeByIndex(index);
+        oldElement = currentNode.element;
+        currentNode.element = element;
+        return oldElement;
     }
 
     @Override
@@ -146,14 +255,55 @@ public class CustomLinkedList<E> implements List<E> {
 
     }
 
+    /**
+     * Removes the element at the specified position in this list.  Shifts any
+     * subsequent elements to the left (subtracts one from their indices).
+     * Returns the element that was removed from the list.
+     *
+     * @param index the index of the element to be removed
+     * @return the element previously at the specified position
+     * @throws IndexOutOfBoundsException {@inheritDoc}
+     */
     @Override
     public E remove(int index) {
-        return null;
+        checkIndex(index);
+        Node<E> currentNode = getNodeByIndex(index);
+        currentNode.prevReference.nextReference = currentNode.nextReference;
+        currentNode.nextReference.prevReference = currentNode.prevReference;
+        size--;
+        return currentNode.element;
     }
 
+    /**
+     * Returns the index of the first occurrence of the specified element
+     * in this list, or -1 if this list does not contain the element.
+     * More formally, returns the lowest index {@code i} such that
+     * {@code Objects.equals(o, get(i))},
+     * or -1 if there is no such index.
+     *
+     * @param o element to search for
+     * @return the index of the first occurrence of the specified element in
+     * this list, or -1 if this list does not contain the element
+     */
     @Override
     public int indexOf(Object o) {
-        return 0;
+        if (o == null) {
+            throw new NullPointerException();
+        }
+        if (size != 0 && !(o.getClass().isAssignableFrom(lastNode.element.getClass()))) {
+            throw new ClassCastException();
+        }
+
+        int index = 0;
+        Node<E> currentNode = firstNode;
+        while (currentNode != null) {
+            if (currentNode.element.equals(o)) {
+                return index;
+            }
+            index++;
+            currentNode = currentNode.nextReference;
+        }
+        return -1;
     }
 
     @Override
@@ -176,11 +326,19 @@ public class CustomLinkedList<E> implements List<E> {
         return null;
     }
 
-    public void toPrint() {
-        Node currentNode = firstNode;
-        while (currentNode != null) {
-            System.out.println(currentNode.element);
-            currentNode = currentNode.nextReference;
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        if (isEmpty()) {
+            str.append("LinkedList is Empty");
+        } else {
+            Node currentNode = firstNode;
+            while (currentNode != null) {
+                str.append(currentNode.element);
+                str.append(" ");
+                currentNode = currentNode.nextReference;
+            }
         }
+        return str.toString();
     }
 }

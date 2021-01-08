@@ -55,20 +55,28 @@ public class Main {
 
 
         //CustomLinkedList Testing
-        CustomLinkedList<String> ll = new CustomLinkedList<>();
-        ll.add("Hello");
-        ll.add("Dear");
-        ll.add("Friend");
-        ll.add("Friend2");
-        ll.toPrint();
-        System.out.println(ll.size());
+        System.out.println("************** LINKED LIST ******************");
+        CustomLinkedList<Integer> ll = new CustomLinkedList<>();
+        ll.add(25);
+        ll.add(30);
+        ll.add(15);
+        System.out.println("Elements are: " + ll);
+        System.out.println("List size is: " + ll.size());
+        System.out.println("*********************************************");
+        ll.addAll(arr2);
+        System.out.println("Elements are: " + ll);
+        System.out.println("List size is: " + ll.size());
+        System.out.println("*********************************************");
+        System.out.println("Element successfully removed: " + ll.remove((Object)6));
+        System.out.println("Elements are: " + ll);
+        System.out.println("List size is: " + ll.size());
+        System.out.println("*********************************************");
+        System.out.println("Element of index 4: " + ll.get(4));
+        System.out.println("*********************************************");
+        System.out.println("Change Element with index 3 to 45: " + ll.set(3, 45));
+        System.out.println("Elements are: " + ll);
+        System.out.println("List size is: " + ll.size());
+        System.out.println("*********************************************");
 
-        ll.remove("Dear");
-        ll.toPrint();
-        System.out.println(ll.size());
-
-        ll.remove("Hello");
-        ll.toPrint();
-        System.out.println(ll.size());
     }
 }
