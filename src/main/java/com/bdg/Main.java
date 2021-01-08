@@ -1,5 +1,6 @@
 package com.bdg;
 
+import com.bdg.custom_collections.LinkedListCustom;
 import com.bdg.design_pattern.immutable_builder.Card;
 import com.bdg.design_principles.LineItem;
 import com.bdg.design_principles.Person;
@@ -40,6 +41,22 @@ public class Main {
         //Test builder Pattern
         Card card=new Card.CardBuilder().number(1225l).cardBuild();
         System.out.println(card.getNumber());
+        LinkedListCustom <String >linkedListCustom=new LinkedListCustom();
+        linkedListCustom.add("Art");
+        //Test LinkedListCustom
+        LinkedListCustom<Integer>listCustom=new LinkedListCustom<Integer>();
+        listCustom.add(10);
+        listCustom.add(12);
+        listCustom.add(18);
+        System.out.println(listCustom.toString());
+        listCustom.deleteByIndex(1);
+        System.out.println(listCustom.toString());
+        System.out.println(listCustom.indexof(18));
+        System.out.println(listCustom.getNode(0));
+        listCustom.clear();
+        System.out.println(listCustom.toString());
+
+
 
     }
 }
