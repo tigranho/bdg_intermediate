@@ -3,12 +3,12 @@ package com.bdg;
 import com.bdg.generic.CustomArrayList;
 
 /**
- * @author Tigran
+ * @author Aram
  */
 public class Main {
 
     public static void main(String[] args) {
-        CustomArrayList<Integer> customArrayList = new CustomArrayList<>(3);
+        CustomArrayList<Integer> customArrayList = new CustomArrayList(3);
         customArrayList.add(10);
         customArrayList.add(2);
         customArrayList.add(4);
