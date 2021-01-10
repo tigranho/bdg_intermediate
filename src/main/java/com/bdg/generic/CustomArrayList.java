@@ -99,18 +99,6 @@ public class CustomArrayList<E> implements List<E> {
     }
 
 
-    /*
-    *    for (int i = 0; i <= this.size; i++) {
-            if (size == this.array.length) {
-                copy(this.array);
-            } else if (index == i) {
-                this.array[index] = t;
-                size++;
-            }
-        }
-    *
-    * */
-
     public E set(int index, E element) {
         if (array != null && element != null) {
             for (int i = 0; i < this.size; i++) {
