@@ -1,16 +1,19 @@
 package com.bdg.homework.customCollections.MyLinkedList;
 
+import java.util.Iterator;
+import java.util.ListIterator;
+
 public class MyLinkedList {
     public static void main(String[] args) {
-        CustomLinkedList customLinkedList= new CustomLinkedList();
+        CustomLinkedList<String> customLinkedList= new CustomLinkedList();
 
-        customLinkedList.add(0,"a");
-        customLinkedList.add(1,"b");
-        customLinkedList.add(2,"c");
-        customLinkedList.add(3,"d");
-
-        customLinkedList.returnSize();
-        customLinkedList.print();
+       customLinkedList.addFirst("something");
+		System.out.println(customLinkedList);
+	
+		Iterator itr = customLinkedList.iterator();
+		while (itr.hasNext()){
+			System.out.println(itr.next());
+		}
 
     }
 }
