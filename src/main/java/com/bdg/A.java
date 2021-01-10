@@ -3,7 +3,7 @@ package com.bdg;
 /**
  * @author Tigran
  */
-public class A extends  Animal {
+public class A {
 
 
 }
