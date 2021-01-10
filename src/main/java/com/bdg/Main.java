@@ -12,10 +12,9 @@ public class Main {
         customArrayList.add(10);
         customArrayList.add(2);
         customArrayList.add(4);
-        customArrayList.add(5);
-        customArrayList.add(1);
+        customArrayList.add(2,6);
 
-        customArrayList.remove(new Integer(4));
+        System.out.println(customArrayList.contains(new Integer(1)));
 
 
     }

@@ -4,9 +4,9 @@ import java.util.*;
 
 public class CustomArrayList<E> implements List<E> {
 
+    private final int defaultSize;
     private E[] array;
     private int size;
-    private int defaultSize;
 
 
     public CustomArrayList() {
@@ -45,35 +45,84 @@ public class CustomArrayList<E> implements List<E> {
         return false;
     }
 
-    public boolean remove(Object o) {
-        if (this.array!=null && o!=null){
 
+    private void removeArraySize(E index) {
+        int count = 0;
+        E[] temp = (E[]) new Object[this.array.length - 1];
+        for (int i = 0; i < size; i++) {
+            if (!array[i].equals(index)) {
+                temp[count++] = this.array[i];
+            }
+        }
+        size -= 1;
+        this.array = temp;
+    }
+
+    public boolean remove(Object o) {
+        if (this.array != null && o != null) {
+            for (int i = 0; i < array.length; i++) {
+                if (o.equals(array[i])) {
+                    this.removeArraySize(array[i]);
+                    return true;
+                }
+            }
         }
         return false;
     }
 
 
     public int size() {
-        return 0;
+        return size;
     }
 
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
-    public boolean contains(Object o) {
+    public boolean contains(Object value) {
+        if (array != null && value != null) {
+            for (int i = 0; i < size; i++) {
+                if (array[i].equals(value)) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
     public void clear() {
-
+        this.array = null;
     }
 
     public E get(int index) {
-        return null;
+        return array[index];
     }
 
+
+    /*
+    *    for (int i = 0; i <= this.size; i++) {
+            if (size == this.array.length) {
+                copy(this.array);
+            } else if (index == i) {
+                this.array[index] = t;
+                size++;
+            }
+        }
+    *
+    * */
+
     public E set(int index, E element) {
+        if (array != null && element != null) {
+            for (int i = 0; i < this.size; i++) {
+                if (size == this.array.length) {
+                    this.copy(this.array);
+                } else if (index == i) {
+                    this.array[index] = element;
+                    size++;
+                    return element;
+                }
+            }
+        }
         return null;
     }
 
