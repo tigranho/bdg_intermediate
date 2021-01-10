@@ -3,7 +3,7 @@ package com.bdg.homework.designPatterns.factoryAbstractDesign;
 public class AbstractFactoryDemo {
     public static void main(String[] args) {
         CarAbstractFactory carAbstractFactory = FactoryProducer.getFactory("Car");
-        //get an object of Shape Circle
+
         Car car1 = carAbstractFactory.getCar("AstonMartin");
         car1.speed();
         Car car2 = carAbstractFactory.getCar("BMW");
