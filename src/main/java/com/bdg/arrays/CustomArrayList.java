@@ -21,6 +21,25 @@ public class CustomArrayList<E> implements List<E> {
 
 
     /**
+     * Inserts the specified element at the specified position in this list
+     * (optional operation).  Shifts the element currently at that position
+     * (if any) and any subsequent elements to the right (adds one to their
+     * indices).
+     */
+    public void add(int index, E element) {
+        if (array != null && element != null) {
+            for (int i = 0; i < this.size; i++) {
+                if (size == this.array.length) {
+                    this.copy(this.array);
+                } else if (index == i) {
+                    this.array[index] = element;
+                    size++;
+                }
+            }
+        }
+    }
+
+    /**
      * Appends the specified element to the end of this list (optional
      * operation).
      *
@@ -87,6 +106,33 @@ public class CustomArrayList<E> implements List<E> {
         return false;
     }
 
+
+
+    /**
+     * Removes the element at the specified position in this list (optional
+     * operation).  Shifts any subsequent elements to the left (subtracts one
+     * from their indices).  Returns the element that was removed from the
+     * list.
+     *
+     * @param index the index of the element to be removed
+     * @return the element previously at the specified position
+
+     */
+    public E remove(int index) {
+        int count = 0;
+        if (this.array != null) {
+            E[] temp = (E[]) new Object[this.array.length - 1];
+            for (int i = 0; i < size; i++) {
+                if (index != i) {
+                    temp[count++] = this.array[i];
+                }
+            }
+            size -= 1;
+            this.array = temp;
+        }
+
+        return null;
+    }
 
 
     /**
@@ -173,50 +219,6 @@ public class CustomArrayList<E> implements List<E> {
         return null;
     }
 
-    /**
-     * Inserts the specified element at the specified position in this list
-     * (optional operation).  Shifts the element currently at that position
-     * (if any) and any subsequent elements to the right (adds one to their
-     * indices).
-     */
-    public void add(int index, E element) {
-        if (array != null && element != null) {
-            for (int i = 0; i < this.size; i++) {
-                if (size == this.array.length) {
-                    this.copy(this.array);
-                } else if (index == i) {
-                    this.array[index] = element;
-                    size++;
-                }
-            }
-        }
-    }
-
-    /**
-     * Removes the element at the specified position in this list (optional
-     * operation).  Shifts any subsequent elements to the left (subtracts one
-     * from their indices).  Returns the element that was removed from the
-     * list.
-     *
-     * @param index the index of the element to be removed
-     * @return the element previously at the specified position
-
-     */
-    public E remove(int index) {
-        int count = 0;
-        if (this.array != null) {
-            E[] temp = (E[]) new Object[this.array.length - 1];
-            for (int i = 0; i < size; i++) {
-                if (index != i) {
-                    temp[count++] = this.array[i];
-                }
-            }
-            size -= 1;
-            this.array = temp;
-        }
-
-        return null;
-    }
 
     /**
      * Returns the index of the first occurrence of the specified element
