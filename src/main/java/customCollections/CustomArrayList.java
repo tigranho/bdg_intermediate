@@ -1,4 +1,4 @@
-package customArrayList;
+package customCollections;
 
 import java.util.*;
 
