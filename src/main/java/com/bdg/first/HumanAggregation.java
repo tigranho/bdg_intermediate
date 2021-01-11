@@ -1,6 +1,6 @@
-package com.bdg;
+package com.bdg.first;
 
-import java.net.HttpURLConnection;
+import com.bdg.first.Address;
 
 public class HumanAggregation {
     Address address;

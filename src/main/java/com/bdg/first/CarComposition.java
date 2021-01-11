@@ -1,4 +1,4 @@
-package com.bdg;
+package com.bdg.first;
 
 public class CarComposition {
     private String model;

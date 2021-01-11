@@ -1,4 +1,4 @@
-package com.bdg;
+package com.bdg.first;
 
 public class UserJavaBean {
     private String name;
