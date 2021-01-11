@@ -1,4 +1,4 @@
-package com.bdg.arrays;
+package com.bdg.array.list;
 
 import java.util.*;
 
