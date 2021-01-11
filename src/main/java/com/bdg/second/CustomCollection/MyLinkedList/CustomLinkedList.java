@@ -1,37 +1,23 @@
-package com.bdg.second.CustomCollection.MyArrayList;
+package com.bdg.second.CustomCollection.MyLinkedList;
 
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-
-public class CustomArrayList<T> implements List<T> {
-    private int size = 0;
-    private T[] array;
-    private static final int CAPACITY = 10;
-
-    CustomArrayList() {
-        array = (T[]) new Object[CAPACITY];
-    }
-
+public class CustomLinkedList implements List {
     @Override
     public int size() {
-        return size;
+        return 0;
     }
 
     @Override
     public boolean isEmpty() {
-        return size == 0;
+        return false;
     }
 
     @Override
     public boolean contains(Object o) {
-        for (Object object : array) {
-            if (o.equals(object)) {
-                return true;
-            }
-        }
         return false;
     }
 
@@ -47,16 +33,7 @@ public class CustomArrayList<T> implements List<T> {
 
     @Override
     public boolean add(Object o) {
-        if (size == array.length) {
-            Object[] newArray = new Object[array.length + array.length / 2];
-            for (int i = 0; i < array.length; i++) {
-                newArray[i] = array[i];
-            }
-            array = (T[]) newArray;
-            newArray = null;
-        }
-        array[size++] = (T) o;
-        return true;
+        return false;
     }
 
     @Override
@@ -76,27 +53,17 @@ public class CustomArrayList<T> implements List<T> {
 
     @Override
     public void clear() {
-        array = null;
+
     }
 
     @Override
-    public T get(int index) {
-        try {
-            return (T) array[index];
-        } catch (IndexOutOfBoundsException e) {
-            throw new IndexOutOfBoundsException();
-        }
+    public Object get(int index) {
+        return null;
     }
 
-
     @Override
-    public T set(int index, T element) {
-        if (index >= array.length) {
-            throw new IllegalArgumentException();
-        } else {
-            array[index] = element;
-            return element;
-        }
+    public Object set(int index, Object element) {
+        return null;
     }
 
     @Override
@@ -105,7 +72,7 @@ public class CustomArrayList<T> implements List<T> {
     }
 
     @Override
-    public T remove(int index) {
+    public Object remove(int index) {
         return null;
     }
 
