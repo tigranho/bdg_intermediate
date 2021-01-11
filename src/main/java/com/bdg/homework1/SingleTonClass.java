@@ -1,4 +1,4 @@
-package com.bdg.homework;
+package com.bdg.homework1;
 
 /**
  * @author Ara

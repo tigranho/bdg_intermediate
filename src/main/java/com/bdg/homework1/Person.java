@@ -1,9 +1,12 @@
-package com.bdg.homework;
+/*
+package com.bdg.homework1;
 
+*/
 /**
  * @author Ara
  * builder pattern example with immutable fields
- */
+ *//*
+
 public class Person {
     private final String firstName;
     private final String lastName;
@@ -90,3 +93,4 @@ public class Person {
     }
 }
 
+*/
