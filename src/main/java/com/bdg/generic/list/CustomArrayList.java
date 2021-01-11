@@ -88,7 +88,6 @@ public class CustomArrayList<E> implements List<E> {
     }
 
 
-
     /**
      * Returns the number of elements in this list.  If this list contains
      * more than {@code Integer.MAX_VALUE} elements, returns
@@ -117,7 +116,7 @@ public class CustomArrayList<E> implements List<E> {
      *
      * @param value element whose presence in this list is to be tested
      * @return {@code true} if this list contains the specified element
-     )
+     * )
      */
     public boolean contains(Object value) {
         if (array != null && value != null) {
@@ -134,12 +133,10 @@ public class CustomArrayList<E> implements List<E> {
     /**
      * Removes all of the elements from this list (optional operation).
      * The list will be empty after this call returns.
-     *
-         */
+     */
     public void clear() {
         this.array = null;
     }
-
 
 
     /**
@@ -149,6 +146,9 @@ public class CustomArrayList<E> implements List<E> {
      * @return the element at the specified position in this list
      */
     public E get(int index) {
+        if (index > size || index < 0) {
+            throw new ArrayIndexOutOfBoundsException("index is not correct");
+        }
         return array[index];
     }
 
@@ -156,7 +156,6 @@ public class CustomArrayList<E> implements List<E> {
     /**
      * Replaces the element at the specified position in this list with the
      * specified element (optional operation).
-     *
      */
     public E set(int index, E element) {
         if (array != null && element != null) {
@@ -200,7 +199,6 @@ public class CustomArrayList<E> implements List<E> {
      *
      * @param index the index of the element to be removed
      * @return the element previously at the specified position
-
      */
     public E remove(int index) {
         int count = 0;
@@ -226,7 +224,6 @@ public class CustomArrayList<E> implements List<E> {
      * or -1 if there is no such index.
      *
      * @param value element to search for
-     *
      */
     public int indexOf(Object value) {
         if (this.array != null && value != null) {

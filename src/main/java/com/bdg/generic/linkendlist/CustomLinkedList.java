@@ -32,7 +32,6 @@ public class CustomLinkedList<E> implements List<E> {
             Node n = headNode;
             while (n.next != null) {
                 n = n.next;
-
             }
             n.next = element;
             size++;
