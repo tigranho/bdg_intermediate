@@ -1,6 +1,6 @@
 package com.bdg;
 
-import com.bdg.generic.CustomArrayList;
+import com.bdg.generic.list.CustomArrayList;
 
 /**
  * @author Aram
