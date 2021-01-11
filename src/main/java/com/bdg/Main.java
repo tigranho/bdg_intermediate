@@ -1,6 +1,6 @@
 package com.bdg;
 
-import com.bdg.generic.list.CustomArrayList;
+import com.bdg.generic.linkendlist.CustomLinkedList;
 
 /**
  * @author Aram
@@ -8,13 +8,12 @@ import com.bdg.generic.list.CustomArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        CustomArrayList<Integer> customArrayList = new CustomArrayList(3);
-        customArrayList.add(10);
-        customArrayList.add(2);
-        customArrayList.add(4);
-        customArrayList.add(2,6);
-
-        System.out.println(customArrayList.contains(new Integer(1)));
+        CustomLinkedList<Integer> l = new CustomLinkedList<Integer>();
+        l.add(14);
+        l.add(56);
+        l.add(57);
+        l.add(44);
+        l.add(345);
 
 
     }
