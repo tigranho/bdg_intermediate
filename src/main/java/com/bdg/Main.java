@@ -2,6 +2,7 @@ package com.bdg;
 
 
 import CustomDataStructures.CustomArrayList;
+import CustomDataStructures.CustomHashMap;
 import CustomDataStructures.CustomLinkedList;
 
 import java.util.ArrayList;
@@ -78,5 +79,42 @@ public class Main {
         System.out.println("List size is: " + ll.size());
         System.out.println("*********************************************");
 
-    }
+        //CustomHashMap Testing
+        System.out.println("*************** HASH MAP *******************");
+        CustomHashMap<Integer, String> hm = new CustomHashMap<>();
+        hm.put(1, "January");
+        hm.put(2, "February");
+        hm.put(3, "March");
+        hm.put(4, "March");
+        System.out.println(hm);
+        hm.replace(4, "March", "April");
+        hm.put(5, "May");
+        hm.put(6, "June");
+        hm.put(7, "July");
+        hm.put(8, "August");
+        hm.put(9, "September");
+        hm.put(10, "October");
+        hm.put(11, "November");
+        hm.put(12, "December");
+        System.out.println(hm);
+        hm.clear();
+        System.out.println(hm);
+        hm.put(1, "January");
+        hm.put(2, "February");
+        hm.put(3, "March");
+        System.out.println(hm);
+        System.out.println(hm.size());
+        hm.remove(1);
+        System.out.println(hm);
+        System.out.println(hm.size());
+        hm.remove(2);
+        System.out.println(hm);
+        System.out.println(hm.size());
+        System.out.println(hm.get(3));
+        System.out.println("Contains key: 3 -- " + hm.containsKey(3));
+        System.out.println("Contains key: 4 -- " + hm.containsKey(4));
+
+        System.out.println("Contains March: " + hm.containsValue("March"));
+        System.out.println("Contains march: " + hm.containsValue("march"));
+     }
 }
