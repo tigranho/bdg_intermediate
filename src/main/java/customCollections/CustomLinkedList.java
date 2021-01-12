@@ -50,7 +50,7 @@ public class CustomLinkedList<E> implements List<E> {
 
     /**
      * Appends given param to the end of the list.
-     * @param e  - element to be appended
+     * @param e  - element to be appended.
      * @return true (as specified by {@link Collection.add})
      */
     public boolean add(E e) {
