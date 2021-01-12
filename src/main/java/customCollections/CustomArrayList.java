@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Resizable-array implementation of the List interface.
  * Not synchronized.
- * @param <E> the type of elements in this list which is instance of Object class
+ * @param <E> - the type of elements in this list which is instance of Object class
  * @author Tigran
  */
 public class CustomArrayList<E> implements List<E> {
@@ -50,21 +50,16 @@ public class CustomArrayList<E> implements List<E> {
 
     /**
      * Checks if list contains given param
-     * @param o element presence of which is to be checked
+     * @param o - element presence of which is to be checked
      * @return {@code true} if list contains param.
      */
     public boolean contains(Object o) {
-        for (Object object : objects) {
-            if (o.equals(object)) {
-                return true;
-            }
-        }
-        return false;
+        return indexOf(0) >= 0;
     }
 
     /**
      * Appends given param to the end of the list.
-     * @param o element to be appended
+     * @param o  - element to be appended
      * @return true (as specified by {@link Collection.add})
      */
     public boolean add(Object o) {
@@ -76,10 +71,10 @@ public class CustomArrayList<E> implements List<E> {
     }
 
     /**
-     * Appends all of the given collections' elements to the end of the list
-     * @param c collection that contains elements to be appended
-     * @return if the list has ben changed after the call
-     * @throws NullPointerException if the given collection is null
+     * Appends all of the given collections' elements to the end of the list.
+     * @param c - collection that contains elements to be appended.
+     * @return {@code true} if the list has ben changed after the call.
+     * @throws NullPointerException if the given collection is null.
      */
     public boolean addAll(Collection<? extends E> c) {
         if (c == null ){
@@ -107,7 +102,7 @@ public class CustomArrayList<E> implements List<E> {
 
     /**
      * Returns element in the given index.
-     * @param index the index of the element to be returned.
+     * @param index - the index of the element to be returned.
      * @return element at the given param.
      * @throws IndexOutOfBoundsException if {@code index>size || index<0}
      */
@@ -125,7 +120,7 @@ public class CustomArrayList<E> implements List<E> {
      * Replaces the element in given position with specified element.
      * @param index - index of the element to be replaced.
      * @param element - element to be placed in given position.
-     * @return element that had been replaced.
+     * @return element that has been replaced.
      * @throws IndexOutOfBoundsException if {@code (index>=objects.length || index<0)}
      */
     public E set(int index, E element) {
@@ -137,6 +132,9 @@ public class CustomArrayList<E> implements List<E> {
         }
     }
 
+    /**
+     * Extends list size with half of its capacity.
+     */
     private void grow() {
 
         Object[] newObjects = new Object[objects.length + objects.length / 2];
@@ -180,13 +178,13 @@ public class CustomArrayList<E> implements List<E> {
      * and all subsequent elements to the left (subtracts one from their indicies)
      * @param index - position of the element to be removed
      * @return - element that has been removed
-     * @throws IndexOutOfBoundsException if {@code (index >= objects.length)}
+     * @throws IndexOutOfBoundsException if {@code (index >= objects.length || index<0)}
      */
     public E remove(int index) {
 
         Object dummy;
 
-        if (index >= objects.length) {
+        if (index >= objects.length || index < 0) {
             throw new IndexOutOfBoundsException();
         } else if (index == objects.length - 1) {
             dummy = objects[index];

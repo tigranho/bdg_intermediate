@@ -22,19 +22,37 @@ public class CustomLinkedList<E> implements List<E> {
     private Node<E> last;
 
 
+    /**
+     * Returns number of elements in the list.
+     * @return size.
+     */
     public int size() {
         return size;
     }
 
+    /**
+     * Checks if lise is empty or not.
+     * @return {@code true} if list has no elements.
+     */
     public boolean isEmpty() {
         return size == 0;
     }
 
+    /**
+     * Checks if list contains given param
+     * @param o - element presence of which is to be checked
+     * @return {@code true} if list contains param.
+     */
     public boolean contains(Object o) {
         return indexOf(o) >= 0;
     }
 
 
+    /**
+     * Appends given param to the end of the list.
+     * @param e  - element to be appended
+     * @return true (as specified by {@link Collection.add})
+     */
     public boolean add(E e) {
 
         Node<E> current = last;
@@ -50,6 +68,11 @@ public class CustomLinkedList<E> implements List<E> {
 
     }
 
+    /**
+     *
+     * @param node
+     * @return
+     */
     E unlink(Node<E> node) {
 
         E nodeElement = node.element;
@@ -75,6 +98,12 @@ public class CustomLinkedList<E> implements List<E> {
         return nodeElement;
     }
 
+    /**
+     * Removes first occurrence of param from the list if it is present.
+     * List is unchained if it doesnt contain given param.
+     * @param o - element to be removed from the list.
+     * @return {@code true} if list contained given param.
+     */
     public boolean remove(Object o) {
         if (o == null) {
             for (Node<E> ll = first; ll != null; ll = ll.next) {
@@ -95,6 +124,12 @@ public class CustomLinkedList<E> implements List<E> {
     }
 
 
+    /**
+     * Appends all of the given collections' elements to the end of the list.
+     * @param c - collection that contains elements to be appended.
+     * @return {@code true} if the list has ben changed after the call.
+     * @throws NullPointerException if the given collection is null.
+     */
     public boolean addAll(Collection<? extends E> c) {
         try {
             Object[] o = c.toArray();
@@ -108,6 +143,9 @@ public class CustomLinkedList<E> implements List<E> {
     }
 
 
+    /**
+     * Removes all the elements from the list and makes it empty.
+     */
     public void clear() {
         for (Node<E> ll = first; ll != null; ) {
             Node<E> next = ll.next;
@@ -121,13 +159,25 @@ public class CustomLinkedList<E> implements List<E> {
         size = 0;
     }
 
+    /**
+     * Checks if given index is within lists' range
+     * @param index - index to be validated
+     * @throws IndexOutOfBoundsException if {@code (index >= size || index<0)}
+     */
     public void validateIndex(int index) {
         if (index >= size || index < 0) {
             throw new IndexOutOfBoundsException();
         }
     }
 
+    /**]
+     * Returns element at given position.
+     * @param index - position of element to be returned.
+     * @return element at given position
+     * @throws IndexOutOfBoundsException if {@code (index >= size || index<0)}
+     */
     Node<E> getNodeByIndex(int index) {
+        validateIndex(index);
 
         Node<E> currentNode;
 
@@ -147,11 +197,24 @@ public class CustomLinkedList<E> implements List<E> {
     }
 
 
+    /**
+     * Returns element in the given index.
+     * @param index - the index of the element to be returned.
+     * @return element at the given param.
+     * @throws IndexOutOfBoundsException if {@code index>size || index<0}
+     */
     public E get(int index) {
         validateIndex(index);
         return getNodeByIndex(index).element;
     }
 
+    /**
+     * Replaces the element in given position with specified element.
+     * @param index - index of the element to be replaced.
+     * @param element - element to be placed in given position.
+     * @return element that has been replaced.
+     * @throws IndexOutOfBoundsException if {@code (index>=objects.length || index<0)}
+     */
     public E set(int index, E element) {
         validateIndex(index);
         Node<E> currentNode = getNodeByIndex(index);
@@ -161,6 +224,13 @@ public class CustomLinkedList<E> implements List<E> {
 
     }
 
+    /**
+     * Removes element at given position and shifts next(if any)
+     * and all subsequent elements to the left (subtracts one from their indicies)
+     * @param index - position of the element to be removed
+     * @return - element that has been removed
+     * @throws IndexOutOfBoundsException if {@code (index >= objects.length || index<0)}
+     */
     public E remove(int index) {
         validateIndex(index);
         return unlink(getNodeByIndex(index));
