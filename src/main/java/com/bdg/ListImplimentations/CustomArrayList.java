@@ -187,22 +187,6 @@ public  class CustomArrayList<T> implements List<T> {
         return null;
     }
 
-
-    public static void main(String[] args) {
-        CustomArrayList<Integer> customArrayList = new CustomArrayList<>();
-
-        Random random = new Random();
-
-        for(int i=0;i<12;i++){
-            customArrayList.add(random.nextInt(100));
-        }
-        System.out.println(customArrayList);
-        System.out.println(customArrayList.size);
-       // customArrayList.clear();
-        System.out.println(customArrayList.contains(15));
-
-
-    }
 }
 
 
