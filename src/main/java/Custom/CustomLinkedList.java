@@ -30,7 +30,7 @@ class Test{
 public class  CustomLinkedList<E>  implements List<E> {
 
     private static int counter;
-    private Node head;
+    private Node<E> head;
 
      public  CustomLinkedList(){
 
