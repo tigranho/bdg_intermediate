@@ -22,6 +22,7 @@ class Main{
        System.out.println(list.size());
        list.clear();
         System.out.println(list);
+        System.out.println(list.isEmpty());
 
     }
 }
@@ -29,19 +30,19 @@ class Main{
 public    class CustomArrayList<E>  implements List<E> {
     private int size=0;
     private static final  int default_capacity=10;
-    private Object elements[];
-    private Object emp_arr[]={};
+    private E elements[];
+   private Object emp_arr[]= {};
 
     public CustomArrayList(){
-        elements=new Object[default_capacity];
+        elements=(E[])new Object[default_capacity];
     }
 
 
     public  CustomArrayList( int capacity){
         if(capacity>0){
-            elements=new Object[default_capacity];}
+            elements=(E[])new Object[default_capacity];}
         else if(capacity==0){
-            elements=emp_arr;
+            elements=(E[])emp_arr;
         }else{
             throw new IllegalArgumentException("Illegal capasity");
         }
