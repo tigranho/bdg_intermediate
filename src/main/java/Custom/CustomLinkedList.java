@@ -1,11 +1,32 @@
 package Custom;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
+
+class Test{
+    public static void main(String[] args) {
+        CustomLinkedList<Integer> list = new CustomLinkedList<>();
+
+        list.add(1);
+        list.add(2);
+        list.add(3);
+
+        System.out.println(list);
 
 
+        list.remove(2);
+        System.out.println(list);
+
+        System.out.println( list.get(0) );
+       System.out.println( list.get(1) );
+
+
+        System.out.println(list.size());
+      //  list.clear();
+        //System.out.println(list);
+        System.out.println(list.isEmpty());
+
+    }
+}
 public class  CustomLinkedList<E>  implements List<E> {
 
     private static int counter;
@@ -18,8 +39,8 @@ public class  CustomLinkedList<E>  implements List<E> {
 
       class Node<E> {
 
-        Object data;
-        Node<E> next;
+         private Object data;
+        private Node<E> next;
 
         Node(Object dataValue)
         {
@@ -40,11 +61,13 @@ public class  CustomLinkedList<E>  implements List<E> {
              this.data = data;
          }
 
+
          public Node<E> getNext() {
              return next;
          }
 
-         public void setNext(Node<E> next) {
+         public void setNext(Node<E> next)
+         {
              this.next = next;
          }
      }
@@ -52,12 +75,14 @@ public class  CustomLinkedList<E>  implements List<E> {
 
 
     @Override
-    public int size() {
+    public int size()
+    {
         return counter;
     }
 
     @Override
-    public boolean isEmpty() {
+    public boolean isEmpty()
+    {
         return counter==0;
     }
 
@@ -83,7 +108,19 @@ public class  CustomLinkedList<E>  implements List<E> {
 
     @Override
     public boolean add(E e) {
-        return false;
+
+        if(head==null){
+            this.head = new Node<>(e);
+            counter++;
+            return true;
+        }
+        Node temp = head;
+        while(temp.getNext()!=null){
+            temp = temp.getNext();
+        }
+        temp.setNext(new Node<>(e));
+        counter++;
+        return true;
     }
 
     @Override
@@ -124,20 +161,18 @@ public class  CustomLinkedList<E>  implements List<E> {
     @Override
     public E get(int index) {
 
-    if (index < 0)
-            return null;
-    Node crunchifyCurrent = null;
-		if (head != null) {
-        crunchifyCurrent = head.getNext();
-        for (int i = 0; i < index; i++) {
-            if (crunchifyCurrent.getNext() == null)
-                return null;
+        int currentIndex = 0;
+        Node temp = head;
+        while(temp!=null){
+            if(currentIndex == index){
+                return (E) temp.getData();
+            }else{
+                temp = temp.getNext();
+                currentIndex++;
+            }
 
-            crunchifyCurrent = crunchifyCurrent.getNext();
         }
-        return (E)crunchifyCurrent.getData();
-    }
-		return (E)crunchifyCurrent;
+        throw new IllegalArgumentException();
 
 }
 
@@ -168,7 +203,21 @@ public class  CustomLinkedList<E>  implements List<E> {
 
     @Override
     public E remove(int index) {
-        return null;
+
+        int currentIndex = 0;
+        Node temp = head;
+        while(temp!=null){
+            if ((currentIndex+1)==index){
+                temp.setNext(temp.getNext().getNext());
+                counter--;
+                break;
+            }else{
+                temp = temp.getNext();
+                currentIndex++;
+            }
+        }
+
+        return (E) temp.getData();
     }
 
     @Override
@@ -177,9 +226,7 @@ public class  CustomLinkedList<E>  implements List<E> {
     }
 
     @Override
-    public int lastIndexOf(Object o) {
-        return 0;
-    }
+    public int lastIndexOf(Object o) { return 0; }
 
     @Override
     public ListIterator<E> listIterator() {
@@ -202,5 +249,17 @@ public class  CustomLinkedList<E>  implements List<E> {
 
     private void decrementCounter() {
         counter--;
+    }
+
+    @Override
+    public String toString() {
+         Node temp=head;
+         int i=0;
+         Object arr[]=new Object[counter];
+         while(temp!=null){
+             arr[i++]=temp.getData();
+             temp=temp.getNext();
+         }
+      return Arrays.toString(arr);
     }
 }
