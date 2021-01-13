@@ -12,14 +12,16 @@ class Main{
         System.out.println(list);
 
 
-        list.remove(2);
+      list.remove(2);
         System.out.println(list);
 
         System.out.println( list.get(0) );
         System.out.println( list.get(1) );
 
-        //List Size
-        System.out.println(list.size());
+
+       System.out.println(list.size());
+       list.clear();
+        System.out.println(list);
 
     }
 }
@@ -54,7 +56,7 @@ public    class CustomArrayList<E>  implements List<E> {
         }
         elements[size++] = e;
 
-        return false;
+        return true;
     }
 
     @Override
@@ -88,7 +90,8 @@ public    class CustomArrayList<E>  implements List<E> {
     }
 
     @Override
-    public boolean isEmpty() {
+    public boolean isEmpty()
+    {
         return size==0;
     }
 
@@ -157,22 +160,27 @@ public    class CustomArrayList<E>  implements List<E> {
 
     @Override
     public void clear() {
-        Object[] arr=emp_arr;
-        for (int i=0;i<size;++i)
-        {
-            arr[i]=null;
-        }
+
+        elements = (E[]) new Object[default_capacity];
         size=0;
     }
 
     @Override
     public E get(int index) {
+        if(index>size || index<0){
+            throw new IndexOutOfBoundsException();
+        }
         return (E) elements[index];
     }
 
     @Override
     public Object set(int index, Object element) {
-        return null;
+        if(index<0 || index>size) {
+            System.out.println("wrong argument");
+            return false;
+        }
+        elements[index] = (E) element;
+        return true;
     }
 
     @Override
@@ -182,5 +190,16 @@ public    class CustomArrayList<E>  implements List<E> {
     private void ensureCapacity() {
         int newSize = elements.length * 2;
         elements = Arrays.copyOf(elements, newSize);
+    }
+
+    @Override public String toString(){
+        String tmp = "{";
+        for(Object t :elements){
+            if(t==null)
+                break;
+            tmp+= ""+t.toString()+",";
+        }
+        tmp+="}";
+        return tmp;
     }
 }
