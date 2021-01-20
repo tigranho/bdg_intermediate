@@ -6,22 +6,28 @@ import java.util.Random;
  * @author Artur
  */
 public class TestThread {
+    static int sum = 0;
+
     public static void main(String[] args) throws InterruptedException {
         for (int i = 0; i < 4; i++) {
-
             new Thread(() -> {
-                System.out.println(sum() + " " + Thread.currentThread().getName());
+                randomNumber();
+                System.out.println(Thread.currentThread().getName());
             }).start();
+
         }
         Thread.currentThread().join(1000);
-        System.out.println(sum() + " " + Thread.currentThread().getName());
+        System.out.println(Thread.currentThread().getName() + " " + sum);
     }
 
-    public synchronized static int sum() {
-        int sum = 0;
-        for (int i = 1; i < 10; i++) {
-            sum += new Random().nextInt(10);
+    public static void randomNumber() {
+        Random random = new Random();
+        int rand = 0;
+        while (true) {
+            rand = random.nextInt(11);
+            if (rand != 0) break;
         }
-        return sum;
+        sum += rand;
     }
+
 }
