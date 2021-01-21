@@ -21,7 +21,7 @@ public class ThreadLocalRandomExample {
                 e.printStackTrace();
             }
         }
-        System.out.println(runnable.sum);
+        System.out.println("sum is + " + runnable.sum);
 
         }
 
