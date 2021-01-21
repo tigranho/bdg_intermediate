@@ -26,7 +26,7 @@ public class CurrentThreads {
 
 class Thr {
     int value;
-    synchronized void randomValue(int value) {
+     void randomValue(int value) {
         this.value = value;
     }
     int getValue() {
