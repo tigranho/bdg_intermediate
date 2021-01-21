@@ -11,6 +11,7 @@ public class CustomArrayList<T> implements List<T> {
     private T[] array;
     private static final int CAPACITY = 10;
 
+
     CustomArrayList() {
         array = (T[]) new Object[CAPACITY];
     }
