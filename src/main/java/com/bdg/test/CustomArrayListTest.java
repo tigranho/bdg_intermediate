@@ -3,8 +3,6 @@ package com.bdg.test;
 import customCollections.CustomArrayList;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.Arrays;
 import java.util.Random;
 
 public class CustomArrayListTest {
