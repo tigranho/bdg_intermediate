@@ -8,6 +8,8 @@ import java.util.ListIterator;
 
 public class MyLinkedList<T> implements List<T> {
     private int size = 0;
+    private Node head = null;
+    private Node tell = null;
 
     private class Node {
         private Node prev;
@@ -21,13 +23,10 @@ public class MyLinkedList<T> implements List<T> {
         }
     }
 
-    private Node firstItem = null;
-    private Node lastItem = null;
-
 
     @Override
     public boolean isEmpty() {
-        return this.firstItem == null;
+        return this.head == null;
     }
 
 
@@ -55,13 +54,15 @@ public class MyLinkedList<T> implements List<T> {
     @Override
     public boolean add(T data) {
         Node temp = new Node(data);
-        if (firstItem == null) {
-            firstItem = temp;
+        if (head == null) {
+            head = temp;
         } else {
-            lastItem.next = temp;
-            temp.prev = lastItem;
+            tell.next = temp;
+            temp.prev = tell;
+
         }
-        lastItem = temp;
+        tell = temp;
+
         size++;
         return true;
     }
@@ -86,16 +87,16 @@ public class MyLinkedList<T> implements List<T> {
         }
         if (index == 0) {
             Node item = new Node(element);
-            firstItem.prev = item;
-            item.next = firstItem;
-            firstItem = item;
+            head.prev = item;
+            item.next = head;
+            head = item;
             size++;
             return;
         }
         if (index >= size) {
             add(element);
         } else {
-            Node shiftItem = firstItem;
+            Node shiftItem = head;
             Node item = new Node(element);
             while (index-- > 0)
                 shiftItem = shiftItem.next;
@@ -129,11 +130,11 @@ public class MyLinkedList<T> implements List<T> {
         if (size == 0)
             return null;
         if (index <= 0)
-            return firstItem.item;
+            return head.item;
         if (index > size)
-            return lastItem.item;
+            return tell.item;
 
-        Node result = firstItem;
+        Node result = head;
         while (index-- > 0)
             result = result.next;
         return result.item;
@@ -156,7 +157,7 @@ public class MyLinkedList<T> implements List<T> {
     public T remove(int index) {
         if (size == 0 || index < 0 || index >= size)
             throw new IndexOutOfBoundsException();
-        Node remItem = firstItem;
+        Node remItem = head;
         while (index-- > 0)
             remItem = remItem.next;
         remItem.prev.next = remItem.next;
@@ -179,7 +180,7 @@ public class MyLinkedList<T> implements List<T> {
     @Override
     public boolean contains(Object element) {
 
-        Node cursor = firstItem;
+        Node cursor = head;
 
         for (int x = 0; x < size; x++) {
             if (cursor == null) {
@@ -199,7 +200,7 @@ public class MyLinkedList<T> implements List<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
-            Node actviItem = firstItem;
+            Node actviItem = head;
 
             @Override
             public boolean hasNext() {
@@ -300,6 +301,8 @@ public class MyLinkedList<T> implements List<T> {
 
     @Override
     public void clear() {
+
+        head = null;
 
     }
 

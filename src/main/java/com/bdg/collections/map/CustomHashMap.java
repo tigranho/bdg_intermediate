@@ -168,7 +168,9 @@ public class CustomHashMap<K, V> {
             System.out.print("]");
             System.out.println();
         }
+
     }
+
 
     private static class Entry<K, V> {
         K key;
@@ -180,5 +182,6 @@ public class CustomHashMap<K, V> {
             this.value = value;
             this.next = next;
         }
+
     }
 }
