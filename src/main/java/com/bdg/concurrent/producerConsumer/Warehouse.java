@@ -3,7 +3,6 @@ package com.bdg.concurrent.producerConsumer;
 import java.util.ArrayList;
 
 public class Warehouse {
-
     int capacity = 8;
     ArrayList<String> arrayList = new ArrayList<>();
 

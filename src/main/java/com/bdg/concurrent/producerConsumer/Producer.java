@@ -1,7 +1,6 @@
 package com.bdg.concurrent.producerConsumer;
 
 public class Producer implements Runnable {
-
     Warehouse warehouse;
 
     public Producer(Warehouse warehouse) {
