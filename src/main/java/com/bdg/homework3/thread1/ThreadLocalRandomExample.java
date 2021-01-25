@@ -1,7 +1,6 @@
-package com.bdg.homework3;
+package com.bdg.homework3.thread1;
 
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.bdg.homework3.thread1.MyRunnable;
 
 public class ThreadLocalRandomExample {
 
