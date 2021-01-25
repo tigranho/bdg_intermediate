@@ -12,7 +12,7 @@ public class CustomArrayList<T> implements List<T> {
     private static final int CAPACITY = 10;
 
 
-    CustomArrayList() {
+    public CustomArrayList() {
         array = (T[]) new Object[CAPACITY];
     }
 

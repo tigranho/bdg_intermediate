@@ -15,6 +15,7 @@ public class CustomLinkedList<T> implements List<T> {
 
     private static class Node<T> {
         private T value;
+        private Node<T> next;
 
         public T getValue() {
             return value;
@@ -32,8 +33,6 @@ public class CustomLinkedList<T> implements List<T> {
             this.next = next;
         }
 
-        private Node<T> next;
-
         public Node(T t) {
 
         }
@@ -43,6 +42,7 @@ public class CustomLinkedList<T> implements List<T> {
 
     @Override
     public int size() {
+
         return size;
     }
 
