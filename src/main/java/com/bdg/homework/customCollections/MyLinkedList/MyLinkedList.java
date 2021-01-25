@@ -1,8 +1,5 @@
 package com.bdg.homework.customCollections.MyLinkedList;
 
-import java.util.Iterator;
-import java.util.ListIterator;
-
 public class MyLinkedList
 {
 	public static void main(String[] args)
@@ -15,7 +12,5 @@ public class MyLinkedList
 		customLinkedList.add("4 Element");
 		
 		customLinkedList.print();
-		
-		
 	}
 }
