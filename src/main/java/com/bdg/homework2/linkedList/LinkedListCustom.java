@@ -18,21 +18,6 @@ public class LinkedListCustom<T>  {
         numNodes = 0;
     }
 
-    /**
-     *  adding data at the end of LinkedList
-     * @param data
-     */
-
-    public void add(T data) {
-        Node<T> temp = head;
-        while(temp.next != null)
-        {
-            temp = temp.next;
-        }
-
-        temp.next = new Node<T>(data);
-        numNodes++;
-    }
 
     /**
      * add element at the first of linked List
@@ -65,13 +50,13 @@ public class LinkedListCustom<T>  {
      * @param index
      * @return Node by index
      */
-    public Node<T> get(int index) {
+    public T get(int index) {
         Node<T> temp=head;
         for(int i=0; i<index; i++)
         {
             temp = temp.next;
         }
-        return temp;
+        return temp.data;
     }
 
     /**

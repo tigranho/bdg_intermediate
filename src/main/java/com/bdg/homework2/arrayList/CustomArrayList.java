@@ -108,7 +108,7 @@ public class CustomArrayList<E> implements CustomList<E> {
      * @return {@code true} if this list contains no elements
      */
     public boolean isEmpty() {
-        return this.elementData.length == 0;
+        return this.size == 0;
     }
 
     /**
