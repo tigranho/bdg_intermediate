@@ -13,6 +13,10 @@ public class Consumer implements Runnable {
 
     @Override
     public void run() {
-
+        try {
+            wareHouse.consumer();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

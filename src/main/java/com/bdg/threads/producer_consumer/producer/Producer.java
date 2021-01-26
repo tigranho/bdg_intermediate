@@ -12,6 +12,11 @@ public class Producer implements Runnable {
 
     @Override
     public void run() {
+        try {
+            wareHouse.produce();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 }
