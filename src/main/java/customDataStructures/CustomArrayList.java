@@ -1,4 +1,4 @@
-package CustomDataStructures;
+package customDataStructures;
 
 import java.util.*;
 

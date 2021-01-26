@@ -1,4 +1,4 @@
-package Ch7.Concurrency;
+package ch7.concurrency;
 
 import java.util.Random;
 
