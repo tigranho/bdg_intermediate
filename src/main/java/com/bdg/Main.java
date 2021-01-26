@@ -1,5 +1,7 @@
 package com.bdg;
 
+import java.util.Random;
+
 /**
  * @author Tigran
  */
