@@ -1,20 +1,39 @@
 import com.bdg.generic.list.CustomArrayList;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.Before;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
 public class CustomArrayListTest {
 
-    @BeforeEach
-    public CustomArrayList<String> customArrayList() {
-        return new CustomArrayList<>();
-    }
 
+
+    @Before
+    public CustomArrayList<String> customArrayList() {
+        CustomArrayList<String> list = new CustomArrayList<>();
+        list.add("test1");
+        list.add("test2");
+        list.add("test3");
+        return list;
+    }
 
     @Test
     public void addElement() {
-      customArrayList().add("test");
-      customArrayList().add("test1");
+        Assertions.assertTrue(customArrayList().add("test"));
+        Assertions.assertTrue(customArrayList().add("test1"));
     }
+
+    @Test
+    public  void removeElement(){
+        Assertions.assertTrue(customArrayList().remove("test1"));
+        Assertions.assertFalse(customArrayList().remove("test"));
+    }
+
+    @Test
+    public  void  checkSize(){
+        Assertions.assertNotEquals(customArrayList().size(), 0);
+        Assertions.assertEquals(customArrayList().size(),3);
+    }
+
+
 }
