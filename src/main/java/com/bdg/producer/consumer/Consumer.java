@@ -1,36 +1,20 @@
 package com.bdg.producer.consumer;
 
-public class Consumer implements Runnable{
-    WareHouse wareHouse;
+public class Consumer implements Runnable {
+    WareHouse consumer;
 
-    public Consumer(WareHouse wareHouse){
-        this.wareHouse = wareHouse;
-    }
-
-    public synchronized void consume(){
-        while(true) {
-            if(wareHouse.arrayList.size() > 0){
-                int data = wareHouse.arrayList.remove(0);
-                System.out.println("Remove product = " + data);
-            }
-        }
-
+    Consumer(WareHouse consumer){
+        this.consumer = consumer;
     }
 
     @Override
     public void run() {
-        if(wareHouse.arrayList.size() > 1) {
-            consume();
-        }
-        else {
-            try {
-                Consumer.class.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            finally {
-                notify();
-            }
+        try {
+            consumer.serve();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
+
+
 }
