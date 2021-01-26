@@ -5,8 +5,6 @@ public class Main {
         System.out.println("/=/=/=/= TESTING /=/=/=/=");
         LinkedListCustom<Integer> list = new LinkedListCustom<>();
         list.addFirst(1);
-        list.add(2);
-        list.add(3);
         //System.out.println(list.size());
         list.add(2,15);
         list.add(3,16);
