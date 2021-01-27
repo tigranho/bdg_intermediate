@@ -14,6 +14,9 @@ public class CustomHashMap<K, V> {
     }
 
     public CustomHashMap(int initialCapacity) {
+        if (initialCapacity < 0) {
+            throw new IllegalArgumentException();
+        }
         this.array = new Entry[initialCapacity];
         loadFactor = DEFAULT_LOAD_FACTOR;
 
@@ -169,10 +172,28 @@ public class CustomHashMap<K, V> {
             System.out.println();
         }
 
+
+    }
+
+    public void clear() {
+        CustomHashMap.Entry[] tab;
+
+        if (this.array != null && this.size > 0) {
+            this.size = 0;
+            tab = array;
+
+            for (int i = 0; i < array.length; ++i) {
+                tab[i] = null;
+            }
+        }
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
     }
 
 
-    private static class Entry<K, V> {
+    class Entry<K, V> {
         K key;
         V value;
         Entry<K, V> next;
