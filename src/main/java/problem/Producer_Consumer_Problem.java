@@ -1,7 +1,5 @@
 package problem;
 
-import java.util.ArrayList;
-
 public class Producer_Consumer_Problem {
     public static void main(String[] args) throws InterruptedException  {
       final  Produce_Consume pc = new Produce_Consume();
