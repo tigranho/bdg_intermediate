@@ -1,4 +1,4 @@
-package com.bdg.collections;
+package com.bdg.collections.and.map.collections;
 
 import java.util.*;
 
