@@ -1,6 +1,6 @@
-package com.bdg.threads.producer_consumer.consumer;
+package com.bdg.homework.threads.producer_consumer.consumer;
 
-import com.bdg.threads.producer_consumer.warehouse.WareHouse;
+import com.bdg.homework.threads.producer_consumer.warehouse.WareHouse;
 
 public class Consumer implements Runnable {
 

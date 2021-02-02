@@ -1,4 +1,4 @@
-package com.bdg.generic.list;
+package com.bdg.homework.generic.list;
 
 import java.util.*;
 

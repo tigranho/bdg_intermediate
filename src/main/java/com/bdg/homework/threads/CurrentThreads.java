@@ -1,4 +1,4 @@
-package com.bdg.threads;
+package com.bdg.homework.threads;
 
 import java.util.Random;
 

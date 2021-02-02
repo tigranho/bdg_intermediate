@@ -1,4 +1,4 @@
-import com.bdg.generic.list.CustomArrayList;
+import com.bdg.homework.generic.list.CustomArrayList;
 import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

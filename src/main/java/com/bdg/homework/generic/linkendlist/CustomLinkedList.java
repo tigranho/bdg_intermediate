@@ -1,4 +1,4 @@
-package com.bdg.generic.linkendlist;
+package com.bdg.homework.generic.linkendlist;
 
 import java.util.Collection;
 import java.util.Iterator;

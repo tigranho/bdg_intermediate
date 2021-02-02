@@ -1,8 +1,8 @@
-package com.bdg.threads.producer_consumer;
+package com.bdg.homework.threads.producer_consumer;
 
-import com.bdg.threads.producer_consumer.consumer.Consumer;
-import com.bdg.threads.producer_consumer.producer.Producer;
-import com.bdg.threads.producer_consumer.warehouse.WareHouse;
+import com.bdg.homework.threads.producer_consumer.consumer.Consumer;
+import com.bdg.homework.threads.producer_consumer.producer.Producer;
+import com.bdg.homework.threads.producer_consumer.warehouse.WareHouse;
 
 public class ProducerConsumerTest {
     public static void main(String[] args) throws InterruptedException {

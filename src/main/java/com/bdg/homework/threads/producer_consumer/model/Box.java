@@ -1,4 +1,4 @@
-package com.bdg.threads.producer_consumer.model;
+package com.bdg.homework.threads.producer_consumer.model;
 
 public class Box {
     private int number;

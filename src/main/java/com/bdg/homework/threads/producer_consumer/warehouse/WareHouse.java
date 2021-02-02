@@ -1,4 +1,4 @@
-package com.bdg.threads.producer_consumer.warehouse;
+package com.bdg.homework.threads.producer_consumer.warehouse;
 
 import java.util.ArrayList;
 

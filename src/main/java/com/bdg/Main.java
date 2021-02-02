@@ -1,6 +1,8 @@
 package com.bdg;
 
-import com.bdg.generic.linkendlist.CustomLinkedList;
+import com.bdg.homework.airport.configuration.DbConnection;
+
+import java.sql.Connection;
 
 /**
  * @author Aram
@@ -8,6 +10,9 @@ import com.bdg.generic.linkendlist.CustomLinkedList;
 public class Main {
 
     public static void main(String[] args) {
+        DbConnection dbConnection= DbConnection.getInstance();
+        Connection connection= dbConnection.getConnection();
+        System.out.println(connection);
 
     }
 
