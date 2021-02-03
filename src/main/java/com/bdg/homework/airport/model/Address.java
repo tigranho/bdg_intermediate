@@ -2,10 +2,14 @@ package com.bdg.homework.airport.model;
 
 public class Address {
     private int id;
-    private City city;
-    private Country country;
+    private String city;
+    private String country;
 
-    public Address(int id, City city, Country country) {
+    public Address(){
+
+    }
+
+    public Address(int id, String city, String country) {
         this.id = id;
         this.city = city;
         this.country = country;
@@ -19,19 +23,19 @@ public class Address {
         this.id = id;
     }
 
-    public City getCity() {
+    public String getCity() {
         return city;
     }
 
-    public void setCity(City city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
-    public Country getCountry() {
+    public String getCountry() {
         return country;
     }
 
-    public void setCountry(Country country) {
+    public void setCountry(String country) {
         this.country = country;
     }
 

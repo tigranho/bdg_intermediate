@@ -1,6 +1,8 @@
 package com.bdg;
 
 import com.bdg.homework.airport.configuration.DbConnection;
+import com.bdg.homework.airport.repository.PassengerDto;
+import com.bdg.homework.airport.repository.PassengerDtoImpl;
 
 import java.sql.Connection;
 
@@ -10,9 +12,8 @@ import java.sql.Connection;
 public class Main {
 
     public static void main(String[] args) {
-        DbConnection dbConnection= DbConnection.getInstance();
-        Connection connection= dbConnection.getConnection();
-        System.out.println(connection);
+        PassengerDto passengerDto= new PassengerDtoImpl();
+        System.out.println(passengerDto.getAll());
 
     }
 

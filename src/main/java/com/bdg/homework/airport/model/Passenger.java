@@ -1,10 +1,15 @@
 package com.bdg.homework.airport.model;
 
-public class Passenger {
-    private  int id;
-    private  String name;
-    private  String phone;
+public class Passenger implements Comparable<Passenger> {
+    private int id;
+    private String name;
+    private String phone;
     private Address address;
+
+
+    public Passenger() {
+
+    }
 
 
     public Passenger(int id, String name, String phone, Address address) {
@@ -54,5 +59,10 @@ public class Passenger {
                 ", phone='" + phone + '\'' +
                 ", address=" + address +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Passenger o) {
+        return name.compareTo(o.name);
     }
 }
