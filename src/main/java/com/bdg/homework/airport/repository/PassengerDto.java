@@ -13,7 +13,7 @@ public interface PassengerDto {
     Set<Passenger> get(int page, int perPage, String sort);
     Passenger save(Passenger passenger);
     Passenger update(Passenger passenger);
-    void delete(long passengerId);
+    void delete(int passengerId);
     List<Passenger> getPassengersOfTrip(long tripNumber);
     void registerTrip(Trip trip, Passenger passenger);
     void cancelTrip(long passengerId, long tripNumber);

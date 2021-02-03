@@ -4,10 +4,7 @@ import com.bdg.homework.airport.configuration.DbConnection;
 import com.bdg.homework.airport.model.Passenger;
 import com.bdg.homework.airport.model.Trip;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -15,6 +12,9 @@ import java.util.TreeSet;
 public class PassengerDtoImpl implements PassengerDto {
     private final static String GET_PASSENGER_BY_ID = "select * from passenger where id=?";
     private final static String GET_ALL_PASSENGERS = "select * from passenger";
+    private final static String SAVE_PASSENGER = "insert  into passenger(name,phone,address_id) values (?,?,?)";
+    private final static String UPDATE_PASSENGER = "update passenger set name=?,phone=?,address_id=?  where id=?";
+    private final static String DELETE_PASSENGER = "delete from passenger where  id=?";
     private final Connection connection = DbConnection.getInstance().getConnection();
     private final AddressDao addressDao = new AddressDaoImpl();
 
@@ -67,17 +67,55 @@ public class PassengerDtoImpl implements PassengerDto {
 
     @Override
     public Passenger save(Passenger passenger) {
-        return null;
+        try {
+            PreparedStatement statement = connection.prepareStatement(SAVE_PASSENGER, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, passenger.getName());
+            statement.setString(2, passenger.getPhone());
+            statement.setInt(3, passenger.getAddress().getId());
+            statement.executeUpdate();
+            try (ResultSet genId = statement.getGeneratedKeys()) {
+                if (genId.next()) {
+                    passenger.setId(genId.getInt(1));
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return passenger;
     }
 
     @Override
     public Passenger update(Passenger passenger) {
-        return null;
+        try {
+            PreparedStatement statement = connection.prepareStatement(UPDATE_PASSENGER, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, passenger.getName());
+            statement.setString(2, passenger.getPhone());
+            statement.setInt(3, passenger.getAddress().getId());
+            statement.setInt(4, passenger.getId());
+            statement.executeUpdate();
+            try (ResultSet genId = statement.getGeneratedKeys()) {
+                if (genId.next()) {
+                    passenger.setId(genId.getInt(1));
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return passenger;
     }
 
     @Override
-    public void delete(long passengerId) {
+    public void delete(int passengerId) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(DELETE_PASSENGER, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1,passengerId);
+            statement.executeUpdate();
 
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     @Override

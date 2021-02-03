@@ -9,8 +9,7 @@ public class Address {
 
     }
 
-    public Address(int id, String city, String country) {
-        this.id = id;
+    public Address( String city, String country) {
         this.city = city;
         this.country = country;
     }
