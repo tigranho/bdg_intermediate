@@ -1,10 +1,11 @@
 package com.bdg;
 
 import com.bdg.homework.airport.model.Address;
-import com.bdg.homework.airport.repository.AddressDao;
-import com.bdg.homework.airport.repository.AddressDaoImpl;
-import com.bdg.homework.airport.repository.PassengerDao;
-import com.bdg.homework.airport.repository.PassengerDaoImpl;
+import com.bdg.homework.airport.model.Company;
+import com.bdg.homework.airport.repository.*;
+
+import java.time.LocalDateTime;
+import java.time.Month;
 
 /**
  * @author Aram
@@ -12,13 +13,11 @@ import com.bdg.homework.airport.repository.PassengerDaoImpl;
 public class Main {
 
     public static void main(String[] args) {
-     PassengerDao passengerDao = new PassengerDaoImpl();
-//        System.out.println(passengerDto.getAll());
-        AddressDao addressDao= new AddressDaoImpl();
-        Address address= new Address("KIev","Ukrain");
-//        System.out.println(addressDao.save(address));
-//        Passenger passenger= new Passenger("Hov","36-14-38",address);
-        passengerDao.delete(3);
+        CompanyDao dao= new CompanyDaoImpl();
+        Company company=new Company("sevans-travel", LocalDateTime.of(2020, Month.JANUARY,23,11,24));
+        System.out.println(dao.save(company));
+        System.out.println(dao.getAll());
+
 
 
 

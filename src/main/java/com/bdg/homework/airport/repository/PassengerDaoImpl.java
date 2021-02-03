@@ -25,7 +25,7 @@ public class PassengerDaoImpl implements PassengerDao {
             PreparedStatement statement = connection.prepareStatement(GET_PASSENGER_BY_ID);
             statement.setInt(1, id);
             ResultSet res = statement.executeQuery();
-            while (res.next()) {
+            if (res.next()) {
                 passenger = new Passenger();
                 passenger.setId(res.getInt(1));
                 passenger.setName(res.getString(2));
