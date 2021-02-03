@@ -28,7 +28,6 @@ public class DbConnection {
     }
 
     public  Connection getConnection(){
-
         try {
             readConnectionParams();
             Class.forName(driverName);
