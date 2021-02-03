@@ -6,7 +6,7 @@ import com.bdg.homework.airport.model.Trip;
 import java.util.List;
 import java.util.Set;
 
-public interface PassengerDto {
+public interface PassengerDao {
 
     Passenger getById(int id);
     Set<Passenger> getAll();

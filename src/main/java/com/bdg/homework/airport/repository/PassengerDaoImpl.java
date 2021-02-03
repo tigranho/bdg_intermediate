@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class PassengerDtoImpl implements PassengerDto {
+public class PassengerDaoImpl implements PassengerDao {
     private final static String GET_PASSENGER_BY_ID = "select * from passenger where id=?";
     private final static String GET_ALL_PASSENGERS = "select * from passenger";
     private final static String SAVE_PASSENGER = "insert  into passenger(name,phone,address_id) values (?,?,?)";
@@ -21,7 +21,6 @@ public class PassengerDtoImpl implements PassengerDto {
     @Override
     public Passenger getById(int id) {
         Passenger passenger = null;
-        AddressDao addressDao = new AddressDaoImpl();
         try {
             PreparedStatement statement = connection.prepareStatement(GET_PASSENGER_BY_ID);
             statement.setInt(1, id);
