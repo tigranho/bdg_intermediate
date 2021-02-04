@@ -4,21 +4,18 @@ import com.bdg.homework.airport.configuration.DbConnection;
 import com.bdg.homework.airport.model.Passenger;
 import com.bdg.homework.airport.model.Trip;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class TripDaoImpl implements TripDao {
     private Connection connection= DbConnection.getInstance().getConnection();
     private CompanyDao companyDao= new CompanyDaoImpl();
     private final static String GET_TRIP_BY_ID = "select * from trip where trip_number=?";
-    private final static String GET_ALL_PASSENGERS = "select * from passenger";
-    private final static String SAVE_PASSENGER = "insert  into passenger(name,phone,address_id) values (?,?,?)";
-    private final static String UPDATE_PASSENGER = "update passenger set name=?,phone=?,address_id=?  where id=?";
-    private final static String DELETE_PASSENGER = "delete from passenger where  id=?";
+    private final static String GET_ALL_TRIPS = "select * from trip";
+    private final static String SAVE_TRIP = "insert  into trip(company_id,time_in,time_out,town_to,town_from) values (?,?,?,?,?)";
+
 
 
 
@@ -48,7 +45,25 @@ public class TripDaoImpl implements TripDao {
 
     @Override
     public Set<Trip> getAll() {
-        return null;
+        Trip trip = null;
+        Set<Trip> trips = new TreeSet<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement(GET_ALL_TRIPS);
+            ResultSet res = statement.executeQuery();
+            while (res.next()) {
+                trip = new Trip();
+                trip.setTripNumber(res.getInt(1));
+                trip.setCompany(companyDao.getById(res.getInt(2)));
+                trip.setTimeIn(res.getTimestamp(3).toLocalDateTime());
+                trip.setTimeOut(res.getTimestamp(4).toLocalDateTime());
+                trip.setTownTo(res.getString(5));
+                trip.setTownFrom(res.getString(6));
+                trips.add(trip);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return trips;
     }
 
     @Override
@@ -58,7 +73,24 @@ public class TripDaoImpl implements TripDao {
 
     @Override
     public Trip save(Trip passenger) {
-        return null;
+        try {
+            PreparedStatement statement = connection.prepareStatement(SAVE_TRIP, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1,passenger.getCompany().getId());
+            statement.setTimestamp(2, Timestamp.valueOf(passenger.getTimeIn()));
+            statement.setTimestamp(3, Timestamp.valueOf(passenger.getTimeOut()));
+            statement.setString(4,passenger.getTownTo());
+            statement.setString(5,passenger.getTownFrom());
+            statement.executeUpdate();
+            try (ResultSet genId = statement.getGeneratedKeys()) {
+                if (genId.next()) {
+                    passenger.setTripNumber(genId.getInt(1));
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return passenger;
     }
 
     @Override
