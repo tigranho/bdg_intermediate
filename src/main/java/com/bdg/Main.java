@@ -13,12 +13,8 @@ import java.time.Month;
 public class Main {
 
     public static void main(String[] args) {
-        CompanyDao dao= new CompanyDaoImpl();
-        Company company=new Company("sevans-travel", LocalDateTime.of(2020, Month.JANUARY,23,11,24));
-        System.out.println(dao.save(company));
-        System.out.println(dao.getAll());
-
-
+       TripDao tripDao= new TripDaoImpl();
+        System.out.println(tripDao.getById(1));
 
 
     }
