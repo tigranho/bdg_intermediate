@@ -62,6 +62,6 @@ public class Passenger implements Comparable<Passenger> {
 
     @Override
     public int compareTo(Passenger o) {
-        return name.compareTo(o.name);
+        return id-o.id;
     }
 }

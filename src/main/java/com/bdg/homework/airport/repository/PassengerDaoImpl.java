@@ -5,16 +5,15 @@ import com.bdg.homework.airport.model.Passenger;
 import com.bdg.homework.airport.model.Trip;
 
 import java.sql.*;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class PassengerDaoImpl implements PassengerDao {
-    private final static String GET_PASSENGER_BY_ID = "select * from passenger where id=?";
-    private final static String GET_ALL_PASSENGERS = "select * from passenger";
-    private final static String SAVE_PASSENGER = "insert  into passenger(name,phone,address_id) values (?,?,?)";
-    private final static String UPDATE_PASSENGER = "update passenger set name=?,phone=?,address_id=?  where id=?";
-    private final static String DELETE_PASSENGER = "delete from passenger where  id=?";
+    private final String GET_PASSENGER_BY_ID = "select * from passenger where id=?";
+    private final String GET_ALL_PASSENGERS = "select * from passenger";
+    private final String SAVE_PASSENGER = "insert  into passenger(name,phone,address_id) values (?,?,?)";
+    private final String UPDATE_PASSENGER = "update passenger set name=?,phone=?,address_id=?  where id=?";
+    private final String DELETE_PASSENGER = "delete from passenger where  id=?";
+    private String SELECT_PASSENGER_BY_LIMIT="select * from passenger order by id ";
     private final Connection connection = DbConnection.getInstance().getConnection();
     private final AddressDao addressDao = new AddressDaoImpl();
 
@@ -61,7 +60,33 @@ public class PassengerDaoImpl implements PassengerDao {
 
     @Override
     public Set<Passenger> get(int page, int perPage, String sort) {
-        return null;
+        Passenger passenger = null;
+        Set<Passenger> passengers = new TreeSet<>();
+        if (!sort.equals("desc") || !sort.equals("asc")) {
+            new IllegalArgumentException();
+        }
+        if (page<0 || perPage<0){
+            new IllegalArgumentException();
+        }else{
+            page=page*10;
+        }
+        try {
+            SELECT_PASSENGER_BY_LIMIT = SELECT_PASSENGER_BY_LIMIT.concat(sort).concat(" ")
+                    .concat("limit "+perPage).concat(" ").concat("OFFSET "+page);
+            PreparedStatement statement= connection.prepareStatement(SELECT_PASSENGER_BY_LIMIT);
+            ResultSet set = statement.executeQuery();
+            while (set.next()) {
+                passenger = new Passenger();
+                passenger.setId(set.getInt(1));
+                passenger.setName(set.getString(2));
+                passenger.setPhone(set.getString(3));
+                passenger.setAddress(addressDao.getById(set.getInt(4)));
+                passengers.add(passenger);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return passengers;
     }
 
     @Override
