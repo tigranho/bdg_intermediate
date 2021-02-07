@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
-import java.util.Arrays;
 
 public class FillDataService {
     static final String PATH_COMPANY = "src/main/resources/ams/companies.txt";
@@ -59,7 +58,6 @@ public class FillDataService {
 
 
     }
-
 
 
     private Company getCompany(String[] lineValue) {
@@ -110,7 +108,7 @@ public class FillDataService {
         Passenger passenger = new Passenger();
         passenger.setName(lineValue[0]);
         passenger.setPhone(lineValue[1]);
-        passenger.setAddress(getAddress(lineValue[2],lineValue[3]));
+        passenger.setAddress(getAddress(lineValue[2], lineValue[3]));
 
         return passenger;
     }

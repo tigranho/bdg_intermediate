@@ -1,7 +1,6 @@
 package com.bdg.ams.service;
 
 import com.bdg.ams.exception.DatabaseException;
-import com.bdg.ams.model.Company;
 import com.bdg.ams.model.Passenger;
 import com.bdg.ams.repo.dao.PassengerDao;
 import com.bdg.ams.repo.dao.daoimpl.PassengerDaoImpl;

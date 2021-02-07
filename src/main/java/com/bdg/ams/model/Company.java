@@ -43,7 +43,7 @@ public class Company {
 
     @Override
     public String toString() {
-        return "Company{" + "id=" +id +
+        return "Company{" + "id=" + id +
                 "name='" + name + '\'' +
                 ", foundingDate=" + foundingDate +
                 '}';

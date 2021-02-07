@@ -19,8 +19,8 @@ public class AddressDaoImpl implements AddressDao {
             preparedStatement.setString(1, address.getCountry());
             preparedStatement.setString(2, address.getCity());
             preparedStatement.executeUpdate();
-            try(ResultSet genId=preparedStatement.getGeneratedKeys()){
-                if (genId.next()){
+            try (ResultSet genId = preparedStatement.getGeneratedKeys()) {
+                if (genId.next()) {
                     address.setId(genId.getInt(1));
                 }
             }
@@ -29,6 +29,7 @@ public class AddressDaoImpl implements AddressDao {
         }
         return address;
     }
+
     @Override
     public Optional<Address> getById(long id) throws DatabaseException {
 

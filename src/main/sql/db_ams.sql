@@ -1,4 +1,3 @@
-
 drop database if exists db_ams;
 create database db_ams;
 use db_ams;
@@ -14,10 +13,10 @@ create table address
 
 create table company
 (
-    id            int          not null
+    id         int          not null
         primary key,
-    founding_data datetime     null,
-    name          varchar(255) null
+    found_date datetime     null,
+    name       varchar(255) null
 );
 
 create table passenger
@@ -35,8 +34,8 @@ create table trip
 (
     trip_number int          not null
         primary key,
-    time_in     date    null,
-    time_out    date     null,
+    time_in     date         null,
+    time_out    date         null,
     town_from   varchar(255) null,
     town_to     varchar(255) null,
     company_id  int          null,
@@ -55,4 +54,4 @@ create table passengers_trip
         foreign key (trip_id) references trip (trip_number)
 );
 
-show tables ;
+show tables;

@@ -18,11 +18,11 @@ import java.util.Set;
 
 public class PassengerDaoImpl implements PassengerDao {
 
-    private final static AddressDao addressDao  =new AddressDaoImpl();;
+    private final static AddressDao addressDao = new AddressDaoImpl();
+    ;
 
 
-
-    private  static Passenger toPassenger(ResultSet resultSet) throws SQLException, DatabaseException {
+    private static Passenger toPassenger(ResultSet resultSet) throws SQLException, DatabaseException {
         Passenger passenger = new Passenger();
         passenger.setId(resultSet.getInt("id"));
         passenger.setName(resultSet.getString("name"));
@@ -68,7 +68,7 @@ public class PassengerDaoImpl implements PassengerDao {
                      prepareStatement(AsmConst.SAVE_PASSENGER, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, passenger.getName());
             preparedStatement.setString(2, passenger.getPhone());
-            preparedStatement.setInt(3,passenger.getAddress().getId());
+            preparedStatement.setInt(3, passenger.getAddress().getId());
 
             preparedStatement.executeUpdate();
             try (ResultSet genId = preparedStatement.getGeneratedKeys()) {

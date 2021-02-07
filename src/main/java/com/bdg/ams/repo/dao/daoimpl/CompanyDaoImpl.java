@@ -7,10 +7,9 @@ import com.bdg.ams.util.Convert;
 import com.bdg.ams.util.DatabaseConnectionFactory;
 
 import java.sql.*;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.*;
+import java.util.LinkedHashSet;
+import java.util.Optional;
+import java.util.Set;
 
 public class CompanyDaoImpl implements CompanyDao {
     @Override

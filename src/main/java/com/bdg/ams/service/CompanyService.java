@@ -28,7 +28,8 @@ public class CompanyService {
             e.printStackTrace();
         }
     }
-    public void  allCompany(){
+
+    public void allCompany() {
         companyDao.getAll().forEach(System.out::println);
     }
 

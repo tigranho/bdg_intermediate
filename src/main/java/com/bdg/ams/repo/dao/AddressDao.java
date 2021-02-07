@@ -8,5 +8,6 @@ import java.util.Optional;
 public interface AddressDao {
 
     Address save(Address address);
+
     Optional<Address> getById(long id) throws DatabaseException;
 }

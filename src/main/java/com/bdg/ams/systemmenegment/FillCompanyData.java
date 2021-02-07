@@ -4,7 +4,7 @@ import com.bdg.ams.service.FillDataService;
 
 public class FillCompanyData {
 
-    final  FillDataService dataService;
+    final FillDataService dataService;
 
     public FillCompanyData() {
         this.dataService = new FillDataService();

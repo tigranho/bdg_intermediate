@@ -4,7 +4,7 @@ import com.bdg.ams.service.FillDataService;
 
 public class FillPassengerData {
 
-    final  FillDataService dataService;
+    final FillDataService dataService;
 
     public FillPassengerData() {
         this.dataService = new FillDataService();

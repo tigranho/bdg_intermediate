@@ -2,7 +2,6 @@ package com.bdg.ams.service;
 
 import com.bdg.ams.exception.DatabaseException;
 import com.bdg.ams.model.Address;
-import com.bdg.ams.model.Company;
 import com.bdg.ams.repo.dao.AddressDao;
 import com.bdg.ams.repo.dao.daoimpl.AddressDaoImpl;
 
@@ -13,7 +12,7 @@ public class AddressService {
     private final AddressDao addressDao;
 
     public AddressService() {
-        this.addressDao =new AddressDaoImpl();
+        this.addressDao = new AddressDaoImpl();
     }
 
 
