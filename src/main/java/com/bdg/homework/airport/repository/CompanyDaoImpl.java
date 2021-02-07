@@ -28,7 +28,7 @@ public class CompanyDaoImpl implements CompanyDao{
                 company = new Company();
                 company.setId(res.getInt(1));
                 company.setName(res.getString(2));
-                company.setFoundingDate(res.getTimestamp(3).toLocalDateTime());
+                company.setFoundingDate(res.getTimestamp(3).toLocalDateTime().toLocalDate());
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -47,7 +47,7 @@ public class CompanyDaoImpl implements CompanyDao{
                 company = new Company();
                 company.setId(set.getInt(1));
                 company.setName(set.getString(2));
-                company.setFoundingDate(set.getTimestamp(3).toLocalDateTime());
+                company.setFoundingDate(set.getTimestamp(3).toLocalDateTime().toLocalDate());
                 companies.add(company);
             }
         } catch (SQLException throwables) {
@@ -66,7 +66,7 @@ public class CompanyDaoImpl implements CompanyDao{
        try {
             PreparedStatement statement = connection.prepareStatement(SAVE_COMPANY, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, passenger.getName());
-            statement.setTimestamp(2,Timestamp.valueOf(passenger.getFoundingDate()));
+            statement.setTimestamp(2,Timestamp.valueOf(passenger.getFoundingDate().atStartOfDay()));
             statement.executeUpdate();
             try (ResultSet genId = statement.getGeneratedKeys()) {
                 if (genId.next()) {
@@ -85,7 +85,7 @@ public class CompanyDaoImpl implements CompanyDao{
         try {
             PreparedStatement statement = connection.prepareStatement(UPDATE_COMPANY, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, passenger.getName());
-            statement.setTimestamp(2,Timestamp.valueOf(passenger.getFoundingDate()));
+            statement.setTimestamp(2,Timestamp.valueOf(passenger.getFoundingDate().atStartOfDay()));
             statement.setInt(3, passenger.getId());
             statement.executeUpdate();
             try (ResultSet genId = statement.getGeneratedKeys()) {

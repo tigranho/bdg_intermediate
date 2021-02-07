@@ -6,13 +6,13 @@ import java.time.LocalDateTime;
 public class Company implements Comparable<Company> {
     private  int id;
     private String name;
-    private LocalDateTime foundingDate;
+    private LocalDate foundingDate;
 
     public Company() {
 
     }
 
-    public Company(String name, LocalDateTime foundingDate) {
+    public Company(String name, LocalDate foundingDate) {
         this.name = name;
         this.foundingDate = foundingDate;
     }
@@ -25,11 +25,11 @@ public class Company implements Comparable<Company> {
         this.name = name;
     }
 
-    public LocalDateTime getFoundingDate() {
+    public LocalDate getFoundingDate() {
         return foundingDate;
     }
 
-    public void setFoundingDate(LocalDateTime foundingDate) {
+    public void setFoundingDate(LocalDate foundingDate) {
         this.foundingDate = foundingDate;
     }
 
