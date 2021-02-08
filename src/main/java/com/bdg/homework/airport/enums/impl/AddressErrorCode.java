@@ -6,7 +6,8 @@ import com.bdg.homework.airport.enums.ErrorCode;
 public enum AddressErrorCode implements ErrorCode {
 
     ADDRESS_NOT_VALID_ID(Message.NOT_VALID_ID),
-    ADDRESS_NOT_FOUND(Message.ADDRESS_NOT_FOUND);
+    ADDRESS_NOT_FOUND(Message.ADDRESS_NOT_FOUND),
+    ADDRESS_IS_EMPTY(Message.INVALID_ADDRESS);
 
 
     private String message;

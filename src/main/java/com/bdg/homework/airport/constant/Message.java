@@ -6,5 +6,6 @@ public interface Message {
     String NOT_VALID_ID="Id not valid";
     String PASSENGER_NOT_FOUND="Passenger Not found";
     String ADDRESS_NOT_FOUND="Address not found";
+    String INVALID_ADDRESS="Address data is not correct";
 
 }
