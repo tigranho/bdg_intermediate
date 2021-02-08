@@ -1,19 +1,15 @@
 package com.bdg.airoport.management.system.model;
 
 import java.time.LocalDate;
-import java.util.Set;
 
 public class Company {
     private long id;
     private String companyName;
     private LocalDate foundingDate;
-    private Set<Trip> tripSet;
 
-    public Company(long id, String companyName, LocalDate foundingDate, Set<Trip> tripSet) {
-        this.id = id;
+    public Company(String companyName, LocalDate foundingDate) {
         this.companyName = companyName;
         this.foundingDate = foundingDate;
-        this.tripSet = tripSet;
     }
 
     public long getId() {
@@ -38,15 +34,6 @@ public class Company {
 
     public void setFoundingDate(LocalDate foundingDate) {
         this.foundingDate = foundingDate;
-    }
-
-
-    public Set<Trip> getTripSet() {
-        return tripSet;
-    }
-
-    public void setTripSet(Set<Trip> tripSet) {
-        this.tripSet = tripSet;
     }
 
     @Override

@@ -1,10 +1,24 @@
 package com.bdg.airoport.management.system.model;
 
 public class Address {
+    private int id;
     private String country;
     private String city;
 
     public Address() {
+    }
+
+    public Address(String country, String city) {
+        this.country = country;
+        this.city = city;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCountry() {

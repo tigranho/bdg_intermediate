@@ -8,6 +8,12 @@ public class Passenger {
     public Passenger() {
     }
 
+    public Passenger(String passengerName, String passengerPhone, Address address){
+        this.passengerName = passengerName;
+        this.passengerPhone = passengerPhone;
+        this.address = address;
+    }
+
     public String getPassengerName() {
         return passengerName;
     }
@@ -41,4 +47,5 @@ public class Passenger {
     public String toString() {
         return super.toString();
     }
+
 }
