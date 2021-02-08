@@ -1,4 +1,4 @@
-package com.bdg;
+package designPatterns;
 
 public class HayStorage {
     private int quantity = 0;

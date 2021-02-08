@@ -101,6 +101,14 @@ public class ProducerConsumer {
     }
 
     public static void main(String[] args) {
+
         ProducerConsumer producerConsumer = new ProducerConsumer(50);
+
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                System.out.println(Thread.currentThread().getName());
+            }
+        };
     }
 }

@@ -1,4 +1,4 @@
-package com.bdg;
+package designPatterns;
 
 public class LlamaTrainer {
     public boolean feedLlamas(int numberOfLlamas) {

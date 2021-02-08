@@ -1,9 +1,9 @@
 package com.bdg;
 
 
-import CustomDataStructures.CustomArrayList;
-import CustomDataStructures.CustomHashMap;
-import CustomDataStructures.CustomLinkedList;
+import customDataStructures.CustomArrayList;
+import customDataStructures.CustomHashMap;
+import customDataStructures.CustomLinkedList;
 
 import java.util.ArrayList;
 
