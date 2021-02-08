@@ -10,7 +10,7 @@ public interface TripDAO {
     Set<Trip> getAll();
     Set<Trip> get(int page, int perPage, String sort);
     Trip save(Trip passenger);
-    Trip update(Trip passenger);
+    Trip update(long tripId, Trip passenger);
     void delete(long tripId);
     List<Trip> getTripsFrom(String city);
     List<Trip> getTripsTo(String city);

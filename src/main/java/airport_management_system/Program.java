@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.HashSet;
 import java.util.Set;
 
 public class Program {
@@ -47,7 +48,11 @@ public class Program {
 
 
         // Test --getAll-- method
-//        System.out.println(tripDAO.getAll());
+        Set<Trip> trips = tripDAO.getAll();
+        for(Trip trip : trips) {
+            System.out.println(trip);
+        }
+
 
 
         // Test --get-- method
@@ -65,5 +70,18 @@ public class Program {
 //        System.out.println(tripDAO.save(newTrip));
 
 
+        // Test --saveAll-- method
+//        Set<Trip> tripSet = new HashSet<>();
+//        tripSet.add(new Trip(
+//                LocalDateTime.of(2021, 5, 30, 9, 10),
+//                LocalDateTime.of(2021, 5, 30, 13, 00),
+//                "Tokyo", "Moscow", new Company("Tambee", LocalDate.of(1973, 5, 7))));
+//
+//        tripSet.add(new Trip(
+//                LocalDateTime.of(2021, 6, 10, 12, 40),
+//                LocalDateTime.of(2021, 6, 10, 13, 35),
+//                "Washington", "Ontario", new Company("Skyvu", LocalDate.of(2010, 01, 26))));
+//
+//        System.out.println(tripDAO.saveAll(tripSet));
     }
 }

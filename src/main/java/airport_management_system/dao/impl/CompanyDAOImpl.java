@@ -85,49 +85,40 @@ public class CompanyDAOImpl implements CompanyDAO {
         return companies;
     }
 
+
+    private Company getCompany(Company company, String sqlUpdate) {
+        try (Connection cn = DriverManager.getConnection(PgSql.url, PgSql.username, PgSql.password);
+             PreparedStatement stm2 = cn.prepareStatement(sqlUpdate)) {
+
+            stm2.setString(1, company.getName());
+            stm2.setDate(2, Date.valueOf(company.getFound_date()));
+            stm2.executeUpdate();
+        } catch (Exception exception) {
+            System.out.println(exception);
+        }
+        return company;
+    }
+
     @Override
     public Company save(Company company) {
 
         String sql = "INSERT INTO company (name, found_date) VALUES (?, ?)";
-        try (Connection cn = DriverManager.getConnection(PgSql.url, PgSql.username, PgSql.password);
-             PreparedStatement stm = cn.prepareStatement(sql)) {
-
-            stm.setString(1, company.getName());
-            stm.setDate(2, Date.valueOf(company.getFound_date()));
-            stm.executeUpdate();
-
-        } catch (Exception exception) {
-            System.out.println(exception);
-        }
-        return company;
+        return getCompany(company, sql);
     }
 
     @Override
-    public Company update(Company company) {
-        String sql = "UPDATE company name=?, found_date=? WHERE id=?";
-        try (Connection cn = DriverManager.getConnection(PgSql.url, PgSql.username, PgSql.password);
-             PreparedStatement stm = cn.prepareStatement(sql)) {
-
-            stm.setString(1, company.getName());
-            stm.setDate(2, Date.valueOf(company.getFound_date()));
-            stm.setLong(3, company.getId());
-            stm.executeUpdate();
-
-        } catch (Exception exception) {
-            System.out.println(exception);
-        }
-        return company;
+    public Company update(long companyId, Company company) {
+        String sql = "UPDATE company name=?, found_date=? WHERE id=" + companyId;
+        return getCompany(company, sql);
     }
+
 
     @Override
     public void delete(long companyId) {
-        String sql = "DELETE FROM company WHERE id=?";
+        String sql = "DELETE FROM company WHERE id=" + companyId;
         try (Connection cn = DriverManager.getConnection(PgSql.url, PgSql.username, PgSql.password);
              PreparedStatement stm = cn.prepareStatement(sql)) {
-
-            stm.setLong(1, companyId);
             stm.executeUpdate();
-
         } catch (Exception exception) {
             System.out.println(exception);
         }
