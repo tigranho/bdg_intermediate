@@ -4,6 +4,9 @@ import com.bdg.homework.airport.model.Address;
 import com.bdg.homework.airport.model.Company;
 import com.bdg.homework.airport.model.Passenger;
 import com.bdg.homework.airport.repository.*;
+import com.bdg.homework.airport.repository.impl.AddressDaoImpl;
+import com.bdg.homework.airport.repository.impl.CompanyDaoImpl;
+import com.bdg.homework.airport.repository.impl.PassengerDaoImpl;
 
 import java.io.BufferedReader;
 import java.io.File;

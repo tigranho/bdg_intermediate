@@ -1,8 +1,10 @@
-package com.bdg.homework.airport.repository;
+package com.bdg.homework.airport.repository.impl;
 
 import com.bdg.homework.airport.configuration.DbConnection;
-import com.bdg.homework.airport.model.Passenger;
 import com.bdg.homework.airport.model.Trip;
+import com.bdg.homework.airport.repository.CompanyDao;
+import com.bdg.homework.airport.repository.TripDao;
+import com.bdg.homework.airport.repository.impl.CompanyDaoImpl;
 
 import java.sql.*;
 import java.util.List;

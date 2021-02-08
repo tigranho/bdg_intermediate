@@ -1,8 +1,11 @@
-package com.bdg.homework.airport.repository;
+package com.bdg.homework.airport.repository.impl;
 
 import com.bdg.homework.airport.configuration.DbConnection;
 import com.bdg.homework.airport.model.Passenger;
 import com.bdg.homework.airport.model.Trip;
+import com.bdg.homework.airport.repository.AddressDao;
+import com.bdg.homework.airport.repository.PassengerDao;
+import com.bdg.homework.airport.repository.impl.AddressDaoImpl;
 
 import java.sql.*;
 import java.util.*;
@@ -13,9 +16,9 @@ public class PassengerDaoImpl implements PassengerDao {
     private final String SAVE_PASSENGER = "insert  into passenger(name,phone,address_id) values (?,?,?)";
     private final String UPDATE_PASSENGER = "update passenger set name=?,phone=?,address_id=?  where id=?";
     private final String DELETE_PASSENGER = "delete from passenger where  id=?";
-    private String SELECT_PASSENGER_BY_LIMIT="select * from passenger order by id ";
     private final Connection connection = DbConnection.getInstance().getConnection();
     private final AddressDao addressDao = new AddressDaoImpl();
+    private String SELECT_PASSENGER_BY_LIMIT = "select * from passenger order by id ";
 
     @Override
     public Passenger getById(int id) {
@@ -65,15 +68,15 @@ public class PassengerDaoImpl implements PassengerDao {
         if (!sort.equals("desc") || !sort.equals("asc")) {
             new IllegalArgumentException();
         }
-        if (page<0 || perPage<0){
+        if (page < 0 || perPage < 0) {
             new IllegalArgumentException();
-        }else{
-            page=page*10;
+        } else {
+            page = page * 10;
         }
         try {
             SELECT_PASSENGER_BY_LIMIT = SELECT_PASSENGER_BY_LIMIT.concat(sort).concat(" ")
-                    .concat("limit "+perPage).concat(" ").concat("OFFSET "+page);
-            PreparedStatement statement= connection.prepareStatement(SELECT_PASSENGER_BY_LIMIT);
+                    .concat("limit " + perPage).concat(" ").concat("OFFSET " + page);
+            PreparedStatement statement = connection.prepareStatement(SELECT_PASSENGER_BY_LIMIT);
             ResultSet set = statement.executeQuery();
             while (set.next()) {
                 passenger = new Passenger();
@@ -134,9 +137,10 @@ public class PassengerDaoImpl implements PassengerDao {
     public void delete(int passengerId) {
         try {
             PreparedStatement statement = connection.prepareStatement(DELETE_PASSENGER, Statement.RETURN_GENERATED_KEYS);
-            statement.setInt(1,passengerId);
+            statement.setInt(1, passengerId);
+            Passenger byId = getById(passengerId);
             statement.executeUpdate();
-
+            addressDao.delete(byId.getAddress().getId());
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

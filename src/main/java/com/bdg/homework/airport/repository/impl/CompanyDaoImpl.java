@@ -1,13 +1,14 @@
-package com.bdg.homework.airport.repository;
+package com.bdg.homework.airport.repository.impl;
 
 import com.bdg.homework.airport.configuration.DbConnection;
 import com.bdg.homework.airport.model.Company;
+import com.bdg.homework.airport.repository.CompanyDao;
 
 import java.sql.*;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class CompanyDaoImpl implements CompanyDao{
+public class CompanyDaoImpl implements CompanyDao {
 
     private Connection connection= DbConnection.getInstance().getConnection();
     private final static String GET_COMPANY_BY_ID = "select * from company where id=?";

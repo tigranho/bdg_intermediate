@@ -3,10 +3,11 @@ package airport;
 import com.bdg.homework.airport.model.Address;
 import com.bdg.homework.airport.model.Passenger;
 import com.bdg.homework.airport.repository.AddressDao;
-import com.bdg.homework.airport.repository.AddressDaoImpl;
+import com.bdg.homework.airport.repository.impl.AddressDaoImpl;
 import com.bdg.homework.airport.repository.PassengerDao;
-import com.bdg.homework.airport.repository.PassengerDaoImpl;
+import com.bdg.homework.airport.repository.impl.PassengerDaoImpl;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
@@ -36,6 +37,7 @@ class PassengerDaoImplTest {
     }
 
     @Test
+    @Order(1)
     void save() {
         PassengerDao passengerDao= new PassengerDaoImpl();
         AddressDao addressDao= new AddressDaoImpl();
@@ -49,6 +51,7 @@ class PassengerDaoImplTest {
     }
 
     @Test
+    @Order(2)
     void update() {
         PassengerDao passengerDao= new PassengerDaoImpl();
         AddressDao addressDao= new AddressDaoImpl();
