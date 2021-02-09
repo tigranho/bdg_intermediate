@@ -17,8 +17,8 @@ public class CompanyDaoImpl implements CompanyDao{
 
     private final static String GET_COMPANY_BY_ID = "select * from company where id=?";
     private final static String GET_ALL_COMPANIES = "select * from company";
-    private final static String SAVE_COMPANY = "insert  into company(name,found_date) values (?,?)";
-    private final static String UPDATE_COMPANY = "update company set name=?,found_date=?  where id=?";
+    private final static String SAVE_COMPANY = "insert  into company(name,founding_date) values (?,?)";
+    private final static String UPDATE_COMPANY = "update company set name=?,founding_date=?  where id=?";
     private final static String DELETE_COMPANY = "delete from company where  id=?";
     private final Connection connection = ConnectionFactory.getConnection();
 
@@ -127,9 +127,11 @@ public class CompanyDaoImpl implements CompanyDao{
         List<String> companies = fromFileToList(ReadFile.COMPANIES_PATH);
 
         try {
-            for (String s : companies) {
-                String[] companiesArray = s.split(",");
+            for (int i = 1; i<companies.size(); i++) {
+
+                String[] companiesArray = companies.get(i).split(",");
                 String[] dates = companiesArray[1].split("/");
+
                 LocalDate foundingDate = LocalDate.of(Integer.parseInt(dates[2]),
                         Integer.parseInt(dates[0]),
                         Integer.parseInt(dates[1]));

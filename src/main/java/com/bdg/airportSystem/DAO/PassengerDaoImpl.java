@@ -129,8 +129,8 @@ public class PassengerDaoImpl implements PassengerDao{
         Passenger passenger = new Passenger();
         List<String> passengersList = fromFileToList(ReadFile.PASSENGERS_PATH);
         try {
-            for (String s : passengersList) {
-                String[] passengersArray = s.split(",");
+            for (int i = 1; i<passengersList.size(); i++) {
+                String[] passengersArray = passengersList.get(i).split(",");
                 passenger.setName(passengersArray[0]);
                 passenger.setPhone(passengersArray[0]);
 
