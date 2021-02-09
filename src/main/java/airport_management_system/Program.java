@@ -83,5 +83,9 @@ public class Program {
 //                "Washington", "Ontario", new Company("Skyvu", LocalDate.of(2010, 01, 26))));
 //
 //        System.out.println(tripDAO.saveAll(tripSet));
+
+        System.out.println();
+        System.out.println(tripDAO.getTripsFrom("Ontario"));
+        //System.out.println(tripDAO.getTripsTo("Ontario"));
     }
 }

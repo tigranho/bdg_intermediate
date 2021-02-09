@@ -48,7 +48,7 @@ public class TripDAOImpl implements TripDAO {
     @Override
     public Set<Trip> getAll() {
         Set<Trip> trips = new HashSet<>();
-        String sql = "SELECT t.id, t.time_in, t.time_out, t.town_to, t.town_from, c.name, c.found_date FROM trip as t " +
+        String sql = "SELECT t.id, t.time_in, t.time_out, t.town_from, t.town_to, c.name, c.found_date FROM trip as t " +
                 "INNER JOIN company as c " +
                 "ON (t.company_id = c.id) ";
         try (Connection cn = DriverManager.getConnection(PgSql.url, PgSql.username, PgSql.password);
@@ -213,20 +213,20 @@ public class TripDAOImpl implements TripDAO {
     @Override
     public List<Trip> getTripsFrom(String city) {
         List<Trip> tripList = new ArrayList<>();
-        String sql = "SELECT t.id, t.time_in, t.time_out, t.town_to, t.town_from, c.name, c.found_date FROM trip as t " +
+        String sql = "SELECT t.id, t.time_in, t.time_out, t.town_from, t.town_to, c.name, c.found_date FROM trip as t " +
                 "INNER JOIN company as c " +
                 "ON (t.company_id = c.id) " +
-                "WHERE t.town_from = " + city;
+                "WHERE t.town_from = \'" + city + "\'";
         return getTrips(tripList, sql);
     }
 
     @Override
     public List<Trip> getTripsTo(String city) {
         List<Trip> tripList = new ArrayList<>();
-        String sql = "SELECT t.id, t.time_in, t.time_out, t.town_to, t.town_from, c.name, c.found_date FROM trip as t " +
+        String sql = "SELECT t.id, t.time_in, t.time_out, t.town_from, t.town_to, c.name, c.found_date FROM trip as t " +
                 "INNER JOIN company as c " +
                 "ON (t.company_id = c.id) " +
-                "WHERE t.town_to = " + city;
+                "WHERE t.town_to = \'" + city + "\'";
         return getTrips(tripList, sql);
     }
 }

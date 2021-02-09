@@ -73,6 +73,6 @@ public class Trip {
 
     @Override
     public String toString() {
-        return timeIn + " " + timeOut + " " + townFrom + " " + townTo + " " + company;
+        return timeIn + " " + timeOut + " " + townTo + " " + townFrom + " " + company;
     }
 }
