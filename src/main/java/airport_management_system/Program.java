@@ -86,6 +86,6 @@ public class Program {
 
         System.out.println();
         System.out.println(tripDAO.getTripsFrom("Ontario"));
-        //System.out.println(tripDAO.getTripsTo("Ontario"));
+        System.out.println(tripDAO.getTripsTo("Yerevan"));
     }
 }
