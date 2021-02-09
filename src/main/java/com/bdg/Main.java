@@ -18,6 +18,9 @@ import java.util.Set;
  */
 public class Main {
 
+
+
+
     public static void main(String[] args) {
 
         EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("Hibernate_JPA");
@@ -26,16 +29,10 @@ public class Main {
         entitymanager.getTransaction().begin();
 
         try {
-            Book book = new Book("OCP", 600, LocalDate.now());
-            Book book1 = new Book("OCA", 500, LocalDate.now());
+            Book  book = entitymanager.find(Book.class, 1L);
+            System.out.println(book.getAuthors());
 
-            Set<Book> books = new HashSet<>();
-            books.add(book);
-            books.add(book1);
 
-            Author author  = new Author("Jhon", LocalDate.of(2020,10,10), books );
-            entitymanager.persist(author);
-//
             entitymanager.getTransaction().commit();
         } catch (Exception e) {
             entitymanager.getTransaction().rollback();

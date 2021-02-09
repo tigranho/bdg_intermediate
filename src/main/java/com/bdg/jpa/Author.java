@@ -18,21 +18,29 @@ public class Author {
 
     @Column
     private String name;
-    @Column
+
+    @Column(name = "birth_date")
     private LocalDate birthDate;
 
-    @OneToMany( cascade = CascadeType.ALL)
-    @JoinColumn(name = "author_id")
-    private Set<Book> bookList;
+    @ManyToMany(mappedBy = "authors")
+    private Set<Book> books;
+
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
 
     public Author() {
     }
 
 
-    public Author(String name, LocalDate birthDate, Set<Book> bookList) {
+    public Author(String name, LocalDate birthDate) {
         this.name = name;
         this.birthDate = birthDate;
-        this.bookList = bookList;
     }
 
     public long getId() {
@@ -60,11 +68,4 @@ public class Author {
     }
 
 
-    public Set<Book> getBookList() {
-        return bookList;
-    }
-
-    public void setBookList(Set<Book> bookList) {
-        this.bookList = bookList;
-    }
 }

@@ -2,6 +2,7 @@ package com.bdg.jpa;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 /**
  * @author Tigran
@@ -18,13 +19,27 @@ public class Book {
     @Column
     private String title;
 
-    @Column
+    @Column(name = "page_count")
     private int pageCount;
 
-
-    @Column
+    @Column(name = "publish_date")
     private LocalDate publishDate;
 
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "author_book",
+            joinColumns = {@JoinColumn(name = "book_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "author_id", referencedColumnName = "id")})
+    private Set<Author> authors;
+
+
+    public Set<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Set<Author> authors) {
+        this.authors = authors;
+    }
 
     public Book() {
     }
@@ -54,7 +69,6 @@ public class Book {
         this.title = title;
     }
 
-
     public int getPageCount() {
         return pageCount;
     }
@@ -70,4 +84,6 @@ public class Book {
     public void setPublishDate(LocalDate publishDate) {
         this.publishDate = publishDate;
     }
+
+
 }
