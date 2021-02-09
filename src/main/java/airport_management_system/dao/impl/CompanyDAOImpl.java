@@ -86,9 +86,9 @@ public class CompanyDAOImpl implements CompanyDAO {
     }
 
 
-    private Company getCompany(Company company, String sqlUpdate) {
+    private Company getCompany(Company company, String sql) {
         try (Connection cn = DriverManager.getConnection(PgSql.url, PgSql.username, PgSql.password);
-             PreparedStatement stm2 = cn.prepareStatement(sqlUpdate)) {
+             PreparedStatement stm2 = cn.prepareStatement(sql)) {
 
             stm2.setString(1, company.getName());
             stm2.setDate(2, Date.valueOf(company.getFound_date()));

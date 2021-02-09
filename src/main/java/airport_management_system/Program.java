@@ -17,25 +17,26 @@ public class Program {
     public static void main(String[] args) throws SQLException {
         PgSql.initDatabase();
 
-        // TEST CompanyDAOImpl
+        //***********************************************
+        // TEST companyDAOImpl
+        //***********************************************
+
+        // Test --getById-- method
         CompanyDAOImpl companyDAO = new CompanyDAOImpl();
 //        Company company = companyDAO.getById(10);
 //        System.out.println(company);
 
-        /*
-         * INSERT ELEMENT INTO company TABLE
-         */
 
+        // Test --save-- method
 //        Company newCompany = new Company("Armenia", LocalDate.of(1983, 10, 10));
 //        System.out.println(companyDAO.save(newCompany));
 
-        /*
-         * GET ELEMENT FROM company WITH GIVEN LIMITS AND OFFSET
-         * AND ORDERED BY name DESC
-         */
+        // Test --get-- method
 //        System.out.println(companyDAO.get(5, 10, "DESC"));
 
-        companyDAO.delete(1018);
+
+        // Test --delete-- method
+//        companyDAO.delete(1018);
 
 
         //***********************************************
@@ -49,10 +50,9 @@ public class Program {
 
         // Test --getAll-- method
         Set<Trip> trips = tripDAO.getAll();
-        for(Trip trip : trips) {
+        for (Trip trip : trips) {
             System.out.println(trip);
         }
-
 
 
         // Test --get-- method
@@ -84,6 +84,7 @@ public class Program {
 //
 //        System.out.println(tripDAO.saveAll(tripSet));
 
+        // Test --getTripsFrom- and -getTripsTo-- methods
         System.out.println();
         System.out.println(tripDAO.getTripsFrom("Ontario"));
         System.out.println(tripDAO.getTripsTo("Yerevan"));
