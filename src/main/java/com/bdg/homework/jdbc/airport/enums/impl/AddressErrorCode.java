@@ -1,0 +1,23 @@
+package com.bdg.homework.jdbc.airport.enums.impl;
+
+import com.bdg.homework.jdbc.airport.constant.Message;
+import com.bdg.homework.jdbc.airport.enums.ErrorCode;
+
+public enum AddressErrorCode implements ErrorCode {
+
+    ADDRESS_NOT_VALID_ID(Message.NOT_VALID_ID),
+    ADDRESS_NOT_FOUND(Message.ADDRESS_NOT_FOUND),
+    ADDRESS_IS_EMPTY(Message.INVALID_ADDRESS);
+
+
+    private String message;
+
+    AddressErrorCode(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public String getMessage() {
+        return message;
+    }
+}

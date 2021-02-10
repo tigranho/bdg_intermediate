@@ -1,13 +1,9 @@
 package com.bdg;
 
-import com.bdg.homework.airport.excpetions.impl.PassengerException;
-import com.bdg.homework.airport.model.Passenger;
-import com.bdg.homework.airport.repository.PassengerDao;
-import com.bdg.homework.airport.repository.impl.PassengerDaoImpl;
-import com.bdg.homework.airport.service.PassengerService;
-import com.bdg.homework.airport.service.impl.PassengerServiceImpl;
-
-import java.util.Set;
+import com.bdg.homework.jdbc.airport.controller.PassengerController;
+import com.bdg.homework.jdbc.airport.excpetions.impl.PassengerException;
+import com.bdg.homework.jdbc.airport.model.Address;
+import com.bdg.homework.jdbc.airport.model.Passenger;
 
 /**
  * @author Aram
@@ -15,11 +11,13 @@ import java.util.Set;
 public class Main {
 
     public static void main(String[] args) {
-        PassengerService service= new PassengerServiceImpl();
+        PassengerController controller= new PassengerController();
+        Address address= new Address("Yerevan","Armenia");
+        Passenger passenger= new Passenger("Poxosopoxosyan","",address);
         try {
-            service.delete(1);
+            controller.save(passenger);
         } catch (PassengerException e) {
-         System.err.println(e);
+            e.printStackTrace();
         }
 
 
