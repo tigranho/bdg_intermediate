@@ -12,8 +12,6 @@ import java.util.List;
 
 public class AddressDaoImpl implements AddressDao{
 
-    private final static String GET_ADDRESS_BY_ID = "select * from address where id=?";
-    private final static String SAVE_ADDRESS = "insert into address(town,country) values (?,?)";
     private final Connection connection = ConnectionFactory.getConnection();
 
 
@@ -21,7 +19,7 @@ public class AddressDaoImpl implements AddressDao{
     public Address getById(int id) {
         Address address = null;
         try {
-            PreparedStatement statement = connection.prepareStatement(GET_ADDRESS_BY_ID);
+            PreparedStatement statement = connection.prepareStatement("select * from address where id=?");
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             if (rs.next()){
@@ -40,7 +38,7 @@ public class AddressDaoImpl implements AddressDao{
     public Address save(Address address) {
 
         try {
-            PreparedStatement statement = connection.prepareStatement(SAVE_ADDRESS, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = connection.prepareStatement("insert into address(town,country) values (?,?)", Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, address.getTown());
             statement.setString(2, address.getCountry());
             statement.executeUpdate();
@@ -62,13 +60,13 @@ public class AddressDaoImpl implements AddressDao{
         //String[] temp = new String[list.size()];
 
         try {
-            for (String s : addressList) {
-                String[] temp = s.split(",");
+            for (int i = 1; i<addressList.size(); i++) {
+                String[] temp = addressList.get(i).split(",");
                 address.setCountry(temp[2]);
                 address.setTown(temp[3]);
-                PreparedStatement preparedStatement = connection.prepareStatement(SAVE_ADDRESS);
-                preparedStatement.setString(1, address.getCountry());
-                preparedStatement.setString(2, address.getTown());
+                PreparedStatement preparedStatement = connection.prepareStatement("insert into address(town,country) values (?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+                preparedStatement.setString(1, address.getTown());
+                preparedStatement.setString(2, address.getCountry());
                 preparedStatement.executeUpdate();
             }
 

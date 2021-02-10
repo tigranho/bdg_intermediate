@@ -1,6 +1,7 @@
 package com.bdg.airportSystem.DAO;
 
 import com.bdg.airportSystem.config.ConnectionFactory;
+import com.bdg.airportSystem.model.Address;
 import com.bdg.airportSystem.model.Passenger;
 import com.bdg.airportSystem.model.Trip;
 import com.bdg.airportSystem.util.ReadFile;
@@ -16,12 +17,6 @@ public class PassengerDaoImpl implements PassengerDao{
 
     private final Connection connection = ConnectionFactory.getConnection();
     private final AddressDao addressDao = new AddressDaoImpl();
-    private final static String GET_PASSENGER_BY_ID = "select * from passenger where id=?";
-    private final static String GET_ALL_PASSENGERS = "select * from passenger";
-    private final static String SAVE_PASSENGER = "insert  into passenger(name,phone,address_id) values (?,?,?)";
-    private final static String UPDATE_PASSENGER = "update passenger set name=?,phone=?,address_id=?  where id=?";
-    private final static String DELETE_PASSENGER = "delete from passenger where  id=?";
-
 
 
 
@@ -29,7 +24,7 @@ public class PassengerDaoImpl implements PassengerDao{
     public Passenger getById(int id) {
         Passenger passenger = null;
         try {
-            PreparedStatement statement = connection.prepareStatement(GET_PASSENGER_BY_ID);
+            PreparedStatement statement = connection.prepareStatement("select * from passenger where id=?");
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
@@ -50,7 +45,7 @@ public class PassengerDaoImpl implements PassengerDao{
         Passenger passenger = null;
         Set<Passenger> passengers = new HashSet<>();
         try {
-            PreparedStatement statement = connection.prepareStatement(GET_ALL_PASSENGERS);
+            PreparedStatement statement = connection.prepareStatement("select * from passenger");
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 passenger = new Passenger();
@@ -74,7 +69,7 @@ public class PassengerDaoImpl implements PassengerDao{
     @Override
     public Passenger save(Passenger passenger) {
         try {
-            PreparedStatement statement = connection.prepareStatement(SAVE_PASSENGER, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = connection.prepareStatement("insert  into passenger(name,phone,address) values (?,?,?)", Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, passenger.getName());
             statement.setString(2, passenger.getPhone());
             statement.setInt(3, passenger.getAddress().getId());
@@ -94,7 +89,7 @@ public class PassengerDaoImpl implements PassengerDao{
     @Override
     public Passenger update(Passenger passenger) {
         try {
-            PreparedStatement statement = connection.prepareStatement(UPDATE_PASSENGER, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = connection.prepareStatement("update passenger set name=?,phone=?,address=?  where id=?", Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, passenger.getName());
             statement.setString(2, passenger.getPhone());
             statement.setInt(3, passenger.getAddress().getId());
@@ -115,7 +110,7 @@ public class PassengerDaoImpl implements PassengerDao{
     @Override
     public void delete(int passengerId) {
         try {
-            PreparedStatement statement = connection.prepareStatement(DELETE_PASSENGER, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = connection.prepareStatement("delete from passenger where  id=?", Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1,passengerId);
             statement.executeUpdate();
 
@@ -132,13 +127,18 @@ public class PassengerDaoImpl implements PassengerDao{
             for (int i = 1; i<passengersList.size(); i++) {
                 String[] passengersArray = passengersList.get(i).split(",");
                 passenger.setName(passengersArray[0]);
-                passenger.setPhone(passengersArray[0]);
+                passenger.setPhone(passengersArray[1]);
 
-                PreparedStatement preparedStatement = connection.prepareStatement(SAVE_PASSENGER, PreparedStatement.RETURN_GENERATED_KEYS);
-                preparedStatement.setString(1, passenger.getName());
-                preparedStatement.setString(2, passenger.getPhone());
-                preparedStatement.setInt(3, passenger.getAddress().getId());
-                preparedStatement.executeUpdate();
+                Address address = new Address();
+                address.setTown(passengersArray[3]);
+                address.setCountry(passengersArray[2]);
+
+
+                PreparedStatement statement = connection.prepareStatement("insert  into passenger(name,phone,address) values (?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+                statement.setString(1, passenger.getName());
+                statement.setString(2, passenger.getPhone());
+                statement.setString(3, address.getTown()  + ", " + address.getCountry());
+                statement.executeUpdate();
             }
         } catch (SQLException e) {
             e.printStackTrace();

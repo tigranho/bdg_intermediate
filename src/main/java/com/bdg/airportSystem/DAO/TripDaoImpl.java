@@ -12,19 +12,13 @@ public class TripDaoImpl implements TripDao{
 
     private final Connection connection = ConnectionFactory.getConnection();
     private final CompanyDao companyDao= new CompanyDaoImpl();
-    private final static String GET_TRIP_BY_ID = "select * from trip where trip_number=?";
-    private final static String GET_ALL_TRIPS = "select * from trip";
-    private final static String SAVE_TRIP = "insert  into trip(company_id,time_in,time_out,town_to,town_from) values (?,?,?,?,?)";
-
-
-
 
 
     @Override
     public Trip getById(int id) {
         Trip trip = null;
         try {
-            PreparedStatement statement = connection.prepareStatement(GET_TRIP_BY_ID);
+            PreparedStatement statement = connection.prepareStatement("select * from trip where trip_number=?");
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
@@ -42,7 +36,7 @@ public class TripDaoImpl implements TripDao{
         Trip trip;
         Set<Trip> trips = new HashSet<>();
         try {
-            PreparedStatement statement = connection.prepareStatement(GET_ALL_TRIPS);
+            PreparedStatement statement = connection.prepareStatement("select * from trip");
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 trip = getTrip(rs);
@@ -74,7 +68,7 @@ public class TripDaoImpl implements TripDao{
     @Override
     public Trip save(Trip passenger) {
         try {
-            PreparedStatement statement = connection.prepareStatement(SAVE_TRIP, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = connection.prepareStatement("insert  into trip(company_id,time_in,time_out,town_to,town_from) values (?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1,passenger.getCompany().getId());
             statement.setTimestamp(2, Timestamp.valueOf(passenger.getTimeIn()));
             statement.setTimestamp(3, Timestamp.valueOf(passenger.getTimeOut()));

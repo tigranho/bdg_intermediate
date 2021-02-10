@@ -15,11 +15,7 @@ import static com.bdg.airportSystem.util.ReadFile.fromFileToList;
 
 public class CompanyDaoImpl implements CompanyDao{
 
-    private final static String GET_COMPANY_BY_ID = "select * from company where id=?";
-    private final static String GET_ALL_COMPANIES = "select * from company";
-    private final static String SAVE_COMPANY = "insert  into company(name,founding_date) values (?,?)";
-    private final static String UPDATE_COMPANY = "update company set name=?,founding_date=?  where id=?";
-    private final static String DELETE_COMPANY = "delete from company where  id=?";
+
     private final Connection connection = ConnectionFactory.getConnection();
 
 
@@ -29,7 +25,7 @@ public class CompanyDaoImpl implements CompanyDao{
         Company company = null;
 
         try {
-            PreparedStatement statement = connection.prepareStatement(GET_COMPANY_BY_ID);
+            PreparedStatement statement = connection.prepareStatement("select * from company where id=?");
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             if (rs.next()){
@@ -49,7 +45,7 @@ public class CompanyDaoImpl implements CompanyDao{
         Company company;
         Set<Company> companies = new HashSet<>();
         try {
-            PreparedStatement statement = connection.prepareStatement(GET_ALL_COMPANIES);
+            PreparedStatement statement = connection.prepareStatement("select * from company");
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
                 company = new Company();
@@ -72,7 +68,7 @@ public class CompanyDaoImpl implements CompanyDao{
     @Override
     public Company save(Company passenger) {
         try {
-            PreparedStatement statement = connection.prepareStatement(SAVE_COMPANY, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = connection.prepareStatement("insert  into company(name,founding_date) values (?,?)", Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, passenger.getName());
             statement.setTimestamp(2, Timestamp.valueOf(passenger.getFoundingDate().atStartOfDay()));
             statement.executeUpdate();
@@ -92,7 +88,7 @@ public class CompanyDaoImpl implements CompanyDao{
     @Override
     public Company update(Company passenger) {
        try {
-           PreparedStatement statement = connection.prepareStatement(UPDATE_COMPANY, Statement.RETURN_GENERATED_KEYS);
+           PreparedStatement statement = connection.prepareStatement("update company set name=?,founding_date=?  where id=?", Statement.RETURN_GENERATED_KEYS);
            statement.setString(1, passenger.getName());
            statement.setTimestamp(2,Timestamp.valueOf(passenger.getFoundingDate().atStartOfDay()));
            statement.setInt(3, passenger.getId());
@@ -113,7 +109,7 @@ public class CompanyDaoImpl implements CompanyDao{
     @Override
     public void delete(long companyId) {
         try {
-            PreparedStatement statement = connection.prepareStatement(DELETE_COMPANY, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = connection.prepareStatement("delete from company where  id=?", Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1,(int)companyId);
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -139,7 +135,7 @@ public class CompanyDaoImpl implements CompanyDao{
                 company.setName(companiesArray[0]);
                 company.setFoundingDate(foundingDate);
 
-                PreparedStatement preparedStatement = connection.prepareStatement(SAVE_COMPANY);
+                PreparedStatement preparedStatement = connection.prepareStatement("insert  into company(name,founding_date) values (?,?)");
                 preparedStatement.setString(1, company.getName());
                 preparedStatement.setObject(2, company.getFoundingDate());
                 preparedStatement.executeUpdate();
