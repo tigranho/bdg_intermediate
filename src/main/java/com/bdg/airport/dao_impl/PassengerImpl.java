@@ -83,7 +83,7 @@ public class PassengerImpl implements DaoPassenger {
                 preparedStatement = conn.prepareStatement(SAVE_ALL_FROM_FILE_QUERY,PreparedStatement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, passenger.getName());
                 preparedStatement.setString(2, passenger.getPhone());
-                preparedStatement.setInt(3,passenger.getAddresId());
+                preparedStatement.setInt(3,daoAddress.getAddress(j).getId());
                 preparedStatement.executeUpdate();
             }
             conn.close();
@@ -95,11 +95,16 @@ public class PassengerImpl implements DaoPassenger {
     @Override
     public void save(Passenger passenger) {
         try {
-            preparedStatement = conn.prepareStatement(SAVE_QUERY);
+            preparedStatement = conn.prepareStatement(SAVE_QUERY,Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, passenger.getName());
             preparedStatement.setString(2, passenger.getPhone());
             preparedStatement.setInt(3, passenger.getAddresId());
             preparedStatement.executeUpdate();
+            try (ResultSet genId = preparedStatement.getGeneratedKeys()) {
+                if (genId.next()) {
+                    passenger.setId(genId.getInt(1));
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

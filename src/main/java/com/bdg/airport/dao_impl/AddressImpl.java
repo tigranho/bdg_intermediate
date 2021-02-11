@@ -20,7 +20,6 @@ public class AddressImpl implements DaoAddress {
     private final static String SAVE_ALL_FROM_FILE_QUERY = " INSERT INTO airport.address (country, city)" + " values (?, ?)";
     private final static String CREATE_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS airport.address (" + "id INT AUTO_INCREMENT NOT NULL," + "country VARCHAR(255) NOT NULL," + "city VARCHAR(255)NOT NULL," + "PRIMARY KEY (id))";
     private final static String GET_ADDRESS_BY_ID = "SELECT * FROM airport.address WHERE id=?";
-    private final static String GET_ID = "SELECT id from airport.address";
     Connection conn;
     PreparedStatement preparedStatement = null;
     List<String> list;
@@ -53,13 +52,18 @@ public class AddressImpl implements DaoAddress {
         return address;
     }
 
+
     @Override
     public void save(Address address) {
         try {
-            preparedStatement = conn.prepareStatement(SAVE_QUERY);
+            preparedStatement = conn.prepareStatement(SAVE_QUERY,Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, address.getCountry());
             preparedStatement.setString(2, address.getCity());
             preparedStatement.executeUpdate();
+            ResultSet genId = preparedStatement.getGeneratedKeys();
+            if (genId.next()) {
+                address.setId(genId.getInt(1));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -75,10 +79,14 @@ public class AddressImpl implements DaoAddress {
                 String[] strings = list.get(j).split(",");
                 address.setCountry(strings[2]);
                 address.setCity(strings[3]);
-                preparedStatement = conn.prepareStatement(SAVE_ALL_FROM_FILE_QUERY);
+                preparedStatement = conn.prepareStatement(SAVE_ALL_FROM_FILE_QUERY,Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, address.getCountry());
                 preparedStatement.setString(2, address.getCity());
                 preparedStatement.executeUpdate();
+                ResultSet genId = preparedStatement.getGeneratedKeys();
+                if (genId.next()) {
+                    address.setId(genId.getInt(1));
+                }
             }
             conn.close();
         } catch (Throwable sqlException) {
