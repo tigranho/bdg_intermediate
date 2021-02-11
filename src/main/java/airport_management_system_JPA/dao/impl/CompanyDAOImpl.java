@@ -49,6 +49,7 @@ public class CompanyDAOImpl implements CompanyDAO {
         em.getTransaction().begin();
 
         Set<Company> companies = new HashSet<>(em.createQuery(sqlQuery).setFirstResult(page).setMaxResults(perPage).getResultList());
+
         em.getTransaction().commit();
         em.close();
         emf.close();
