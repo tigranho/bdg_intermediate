@@ -50,10 +50,9 @@ public class CompanyDAOImpl implements CompanyDAO {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
 
-        List<Company> ls;
-        ls = em.createQuery(sqlQuery).setFirstResult(page*perPage).setMaxResults(perPage).getResultList();
+        List<Company> ls = em.createQuery(sqlQuery).setFirstResult(page*perPage).setMaxResults(perPage).getResultList();
 
-        Set<Company> companies = new HashSet<>();
+        //Set<Company> companies = new HashSet<>(em.createQuery(sqlQuery).setFirstResult(page*perPage).setMaxResults(perPage).getResultList());
 
         em.getTransaction().commit();
         em.close();
@@ -63,17 +62,50 @@ public class CompanyDAOImpl implements CompanyDAO {
     }
 
     @Override
-    public Company save(Company passenger) {
-        return null;
+    public Company save(Company company) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Ams_JPA");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+
+        em.persist(company);
+
+        em.getTransaction().commit();
+        em.close();
+        emf.close();
+        return company;
     }
 
     @Override
-    public Company update(long companyId, Company passenger) {
-        return null;
+    public Company update(long companyId, Company company) {
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Ams_JPA");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+
+        Company oldCompany = em.find(Company.class, companyId);
+        oldCompany.setName(company.getName());
+        oldCompany.setFound_date(company.getFound_date());
+
+        em.getTransaction().commit();
+        em.close();
+        emf.close();
+        return company;
+
     }
+
+
 
     @Override
     public void delete(long companyId) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Ams_JPA");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
 
+        Company company = em.find(Company.class, companyId);
+        em.remove(company);
+
+        em.getTransaction().commit();
+        em.close();
+        emf.close();
     }
 }

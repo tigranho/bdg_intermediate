@@ -1,10 +1,19 @@
 package airport_management_system_JPA.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "passenger")
 public class Passenger {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column
     private String name;
+    @Column
     private String phone;
+    @OneToOne
     private Address address;
 
     public Passenger(){}

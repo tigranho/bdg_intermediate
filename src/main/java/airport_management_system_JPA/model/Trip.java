@@ -1,13 +1,23 @@
 package airport_management_system_JPA.model;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "trip")
 public class Trip {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @ManyToOne
     private Company company;
+    @Column(name = "time_in")
     private LocalDateTime timeIn;
+    @Column(name = "time_out")
     private LocalDateTime timeOut;
+    @Column(name = "town_to")
     private String townTo;
+    @Column(name = "town_from")
     private String townFrom;
 
     public Trip(){}

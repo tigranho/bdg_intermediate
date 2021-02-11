@@ -1,8 +1,16 @@
 package airport_management_system_JPA.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="country_city")
 public class Address {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column
     private String country;
+    @Column
     private String city;
 
     public Address(){}

@@ -8,6 +8,8 @@
     <persistence-unit name="Ams_JPA" transaction-type="RESOURCE_LOCAL">
 
         <class>airport_management_system_JPA.model.Company</class>
+        <class>airport_management_system_JPA.model.Address</class>
+        <class>airport_management_system_JPA.model.Trip</class>
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/ams_db"/>
