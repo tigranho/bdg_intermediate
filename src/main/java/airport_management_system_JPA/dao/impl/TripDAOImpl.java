@@ -41,8 +41,19 @@ public class TripDAOImpl implements TripDAO {
     }
 
     @Override
-    public Set<Trip> get(int page, int perPage, String sort) {
-        return null;
+    public List<Trip> get(int page, int perPage, String sort) {
+        String sqlQuery = "SELECT t FROM Trip t ORDER BY t.timeIn " + sort;
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Ams_JPA");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+
+        List<Trip> ls = em.createQuery(sqlQuery).setFirstResult(page*perPage).setMaxResults(perPage).getResultList();
+
+        em.getTransaction().commit();
+        em.close();
+        emf.close();
+        return ls;
     }
 
     @Override
