@@ -29,17 +29,27 @@ public class Main {
         entitymanager.getTransaction().begin();
 
         try {
+
+            //Transient
             Book  book = entitymanager.find(Book.class, 1L);
+
             System.out.println(book.getAuthors());
 
 
+            //Persistent
             entitymanager.getTransaction().commit();
+            //Detached
+
+            entitymanager.close();
+
+            System.out.println(book.getAuthors());
+
+
         } catch (Exception e) {
             entitymanager.getTransaction().rollback();
         }
 
-        entitymanager.close();
-        emfactory.close();
+
     }
 
 }
