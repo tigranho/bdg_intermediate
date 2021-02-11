@@ -7,7 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class CompanyDAOImpl implements CompanyDAO {
@@ -40,7 +42,7 @@ public class CompanyDAOImpl implements CompanyDAO {
     }
 
     @Override
-    public Set<Company> get(int page, int perPage, String sort) {
+    public List<Company> get(int page, int perPage, String sort) {
 
         String sqlQuery = "SELECT c FROM Company c ORDER BY c.name " + sort;
 
@@ -48,13 +50,16 @@ public class CompanyDAOImpl implements CompanyDAO {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
 
-        Set<Company> companies = new HashSet<>(em.createQuery(sqlQuery).setFirstResult(page).setMaxResults(perPage).getResultList());
+        List<Company> ls;
+        ls = em.createQuery(sqlQuery).setFirstResult(page*perPage).setMaxResults(perPage).getResultList();
+
+        Set<Company> companies = new HashSet<>();
 
         em.getTransaction().commit();
         em.close();
         emf.close();
 
-        return companies;
+        return ls;
     }
 
     @Override
