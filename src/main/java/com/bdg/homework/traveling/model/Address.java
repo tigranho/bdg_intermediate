@@ -3,6 +3,7 @@ package com.bdg.homework.traveling.model;
 public class Address {
     private String country;
     private String city;
+    private   int id;
 
     public Address() {
     }
@@ -14,6 +15,14 @@ public class Address {
 
     public String getCountry() {
         return country;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setCountry(String country) {
