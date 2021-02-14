@@ -9,7 +9,7 @@ public interface CompanyDao {
     Set<Company> getAll();
     Set<Company> get(int page, int perPage, String sort);
     Company save(Company passenger);
-    Company update(Company passenger);
+    Company update(Company passenger,int currentID);
     void delete(long companyId);
 
 }

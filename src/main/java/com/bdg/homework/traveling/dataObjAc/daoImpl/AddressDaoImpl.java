@@ -4,21 +4,33 @@ import com.bdg.homework.traveling.connection.DbConnection;
 import com.bdg.homework.traveling.dataObjAc.daoInterfaces.AddressDao;
 import com.bdg.homework.traveling.model.Address;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class AddressDaoImpl implements AddressDao {
     @Override
     public Address getById(int addressID) {
-        return null;
+        Address returnedAddress = new Address();
+        try(Connection connection= new DbConnection().op()){
+
+            PreparedStatement statement = connection.prepareStatement("select * from address where id=?");
+            statement.setInt(1,  addressID );
+
+
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()){
+                returnedAddress.setId(resultSet.getInt("id"));
+                returnedAddress.setCountry(resultSet.getString("country"));
+                returnedAddress.setCity(resultSet.getString("city"));
+                return returnedAddress;
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return returnedAddress;
     }
 
-    @Override
-    public Address getAll() {
-        return null;
-    }
+
 
     @Override
     public Address saveAddress(Address address) {
@@ -34,19 +46,13 @@ public class AddressDaoImpl implements AddressDao {
               currentAddress.setId(genId.getInt("id"));
               currentAddress.setCountry(genId.getString("country"));
               currentAddress.setCity(genId.getString("city"));
-
-
-                 }
-
+              }
 
         } catch (Exception x) {
            x.printStackTrace();
 
         }
-
-
-
-        return currentAddress ;
+      return currentAddress ;
 
 
     }

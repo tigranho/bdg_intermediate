@@ -2,27 +2,52 @@ package com.bdg.homework.traveling.model;
 
 import sun.util.resources.LocaleData;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 public class Trip {
 
     private int tripNumber;
-    private LocalDateTime time_In;
-    private LocalDateTime time_Out;
+    private Date time_In;
+    private Date time_Out;
     private String town_From;
     private String town_TO;
-    private Company organised_company;
+    private int id;
+
+    public Date getTime_In() {
+        return time_In;
+    }
+
+    public void setTime_In(Date time_In) {
+        this.time_In = time_In;
+    }
+
+    public Date getTime_Out() {
+        return time_Out;
+    }
+
+    public void setTime_Out(Date time_Out) {
+        this.time_Out = time_Out;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Trip() {
     }
 
-    public Trip(int tripNumber, LocalDateTime time_In, LocalDateTime time_Out, String town_From, String town_TO, Company organised_company) {
+    public Trip(int tripNumber, Date time_In, Date time_Out, String town_From, String town_TO) {
         this.tripNumber = tripNumber;
         this.time_In = time_In;
         this.time_Out = time_Out;
         this.town_From = town_From;
         this.town_TO = town_TO;
-        this.organised_company = organised_company;
+
     }
 
     public int getTripNumber() {
@@ -33,21 +58,6 @@ public class Trip {
         this.tripNumber = tripNumber;
     }
 
-    public LocalDateTime getTime_In() {
-        return time_In;
-    }
-
-    public void setTime_In(LocalDateTime time_In) {
-        this.time_In = time_In;
-    }
-
-    public LocalDateTime getTime_Out() {
-        return time_Out;
-    }
-
-    public void setTime_Out(LocalDateTime time_Out) {
-        this.time_Out = time_Out;
-    }
 
     public String getTown_From() {
         return town_From;
@@ -65,11 +75,14 @@ public class Trip {
         this.town_TO = town_TO;
     }
 
-    public Company getOrganised_company() {
-        return organised_company;
-    }
-
-    public void setOrganised_company(Company organised_company) {
-        this.organised_company = organised_company;
+      @Override
+    public String toString() {
+        return "Trip{" +
+                "tripNumber=" + tripNumber +
+                ", time_In=" + time_In +
+                ", time_Out=" + time_Out +
+                ", town_From='" + town_From + '\'' +
+                ", town_TO='" + town_TO + '\''  +
+                '}';
     }
 }

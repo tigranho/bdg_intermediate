@@ -1,17 +1,25 @@
 package com.bdg.homework.traveling.model;
 
-import sun.util.resources.LocaleData;
+import java.sql.Date;
+import java.time.LocalDate;
+
+import static java.lang.String.valueOf;
 
 public class Company {
     private String name;
-    private LocaleData localeData;
+    private Date localeDate;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
 
     public Company() {
     }
 
-    public Company(String name, LocaleData localeData) {
+    public Company(String name, Date localeData) {
         this.name = name;
-        this.localeData = localeData;
+        this.localeDate = localeData;
     }
 
     public String getName() {
@@ -22,11 +30,23 @@ public class Company {
         this.name = name;
     }
 
-    public LocaleData getLocaleData() {
-        return localeData;
+
+    public Date getLocaleDate() {
+        return localeDate;
     }
 
-    public void setLocaleData(LocaleData localeData) {
-        this.localeData = localeData;
+    public void setLocaleDate(Date localeDate) {
+        this.localeDate = localeDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "name='" + name + '\'' +
+                ", localeData=" + localeDate +
+                '}';
+    }
+
+    public void setId(int id) {
     }
 }

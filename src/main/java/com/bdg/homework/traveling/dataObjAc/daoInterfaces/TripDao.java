@@ -8,12 +8,12 @@ import java.util.Set;
 public interface TripDao {
 
 
-    Trip getById(long id);
+    Trip getById(int id);
     Set<Trip> getAll();
     Set<Trip> get(int page, int perPage, String sort);
     Trip save(Trip passenger);
-    Trip update(Trip passenger);
-    void delete(long tripId);
+    Trip update(Trip passenger, int id);
+    void delete(int tripId);
     List<Trip> getTripsFrom(String city);
     List<Trip> getTripsTo(String city);
 

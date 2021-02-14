@@ -5,20 +5,21 @@ import java.util.Set;
 public class Passenger {
     private String name;
     private int phoneNumber;
-    private Address address;
-    private Set<Trip> trips ;
+   // private Address address;
+   // private Set<Trip> trips ;
+    private int id;
 
     public Passenger() {
     }
 
-    public Passenger(String name, int phoneNumber, Address address) {
+    public Passenger(String name, int phoneNumber) {
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.address = address;
+    //    this.address = address;
 
     }
 
-    public Set<Trip> getTrips() {
+  /*  public Set<Trip> getTrips() {
         return trips;
     }
 
@@ -32,6 +33,14 @@ public class Passenger {
 
     public void setAddress(Address address) {
         this.address = address;
+    }*/
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -48,5 +57,13 @@ public class Passenger {
 
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Passenger{" +
+                "name='" + name + '\'' +
+                ", phoneNumber=" + phoneNumber  +
+                '}';
     }
 }
