@@ -1,7 +1,7 @@
-package com.bdg.airportManagementSystem.serviceImpl;
+package com.bdg.airport_management_system.dao.daoimpl;
 
-import com.bdg.airportManagementSystem.model.Trip;
-import com.bdg.airportManagementSystem.service.TripDao;
+import com.bdg.airport_management_system.model.Trip;
+import com.bdg.airport_management_system.dao.TripDao;
 
 import java.util.List;
 import java.util.Set;

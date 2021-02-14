@@ -1,11 +1,11 @@
-package com.bdg.airportManagementSystem.service;
+package com.bdg.airport_management_system.dao;
 
-import com.bdg.airportManagementSystem.model.Company;
+import com.bdg.airport_management_system.model.Company;
 
 import java.util.Set;
 
 public interface CompanyDao {
-    Company getById(long id);
+    Company getById(int id);
     Set<Company> getAll();
     Set<Company> get(int page, int perPage, String sort);
     Company save(Company passenger);

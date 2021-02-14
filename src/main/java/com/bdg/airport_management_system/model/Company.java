@@ -1,10 +1,10 @@
-package com.bdg.airportManagementSystem.model;
+package com.bdg.airport_management_system.model;
 
 import java.time.LocalDate;
 import java.util.Set;
 
 public class Company {
-    private long id;
+    private int id;
     private String name;
     private LocalDate foundingDate;
     private Set<Trip> tripSet;
@@ -24,7 +24,7 @@ public class Company {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

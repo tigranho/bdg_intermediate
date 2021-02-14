@@ -1,6 +1,4 @@
-package com.bdg.airportManagementSystem.model;
-
-import com.bdg.airportManagementSystem.model.Company;
+package com.bdg.airport_management_system.model;
 
 import java.time.LocalTime;
 

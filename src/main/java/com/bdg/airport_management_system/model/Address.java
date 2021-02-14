@@ -1,4 +1,4 @@
-package com.bdg.airportManagementSystem.model;
+package com.bdg.airport_management_system.model;
 
 public class Address {
     private String country;
