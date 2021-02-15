@@ -1,8 +1,7 @@
 package com.bdg.homework4.dao;
 
 import com.bdg.homework4.entity.Passenger;
-import com.bdg.homework4.entity.Trip;
-import com.bdg.homework4.service.exception.NotFoundException;
+import com.bdg.homework4.exception.NotFoundException;
 
 import java.sql.SQLException;
 import java.util.List;

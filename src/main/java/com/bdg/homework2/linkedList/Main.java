@@ -1,5 +1,9 @@
 package com.bdg.homework2.linkedList;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("/=/=/=/= TESTING /=/=/=/=");
@@ -10,11 +14,5 @@ public class Main {
         list.add(3,16);
         list.remove(3);
         list.remove(2);
-
-        //list.clear();
-       // System.out.println(list.size());
-        //list.printList();
-        //System.out.println(list.isEmpty());
-        //list.printList();
     }
 }

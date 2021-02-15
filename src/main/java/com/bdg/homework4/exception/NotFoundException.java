@@ -1,4 +1,4 @@
-package com.bdg.homework4.service.exception;
+package com.bdg.homework4.exception;
 
 public class NotFoundException  extends RuntimeException{
     public NotFoundException(String message) {

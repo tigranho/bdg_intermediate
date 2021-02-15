@@ -1,15 +1,14 @@
 package com.bdg.homework4.service;
 
 import com.bdg.homework4.dao.CompanyDAO;
+import com.bdg.homework4.dao.impl.CompanyDAOImpl;
 import com.bdg.homework4.entity.Company;
-import com.bdg.homework4.service.exception.NotFoundException;
+import com.bdg.homework4.exception.NotFoundException;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.sql.Date;
 import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.Set;
 
 public class CompanyDAOImplTest {
     CompanyDAO companyDAO;

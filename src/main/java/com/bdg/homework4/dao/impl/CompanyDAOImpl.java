@@ -1,15 +1,17 @@
-package com.bdg.homework4.service;
+package com.bdg.homework4.dao.impl;
 
 import com.bdg.homework4.dao.CompanyDAO;
 import com.bdg.homework4.entity.Company;
-import com.bdg.homework4.service.exception.NotFoundException;
+import com.bdg.homework4.exception.NotFoundException;
 import com.bdg.homework4.utils.connect.ConnectToDb;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+
+/**
+ * this class is responsible for crud operations with company entity
+ */
 
 public class CompanyDAOImpl extends ConnectToDb implements CompanyDAO {
 
@@ -18,6 +20,13 @@ public class CompanyDAOImpl extends ConnectToDb implements CompanyDAO {
     public CompanyDAOImpl() {
     }
 
+    /**
+     *
+     * @param id by this param we can find and get Company
+     * @return Company that we found
+     * @throws SQLException for PreparedStatement
+     * @throws NotFoundException if incorrect id we pass
+     */
     @Override
     public Company getById(int id) throws SQLException, NotFoundException {
         PreparedStatement preparedStatement = null;
@@ -47,6 +56,11 @@ public class CompanyDAOImpl extends ConnectToDb implements CompanyDAO {
         return company;
     }
 
+    /**
+     *
+     * @return list of companies
+     * @throws SQLException for PreparedStatement
+     */
     @Override
     public Set<Company> getAll() throws SQLException {
         Set<Company> companySet = new HashSet<>();
@@ -75,6 +89,13 @@ public class CompanyDAOImpl extends ConnectToDb implements CompanyDAO {
         return companySet;
     }
 
+    /**
+     *
+     * @param page count started which we we will get Companies
+     * @param perPage this is count we want to see
+     * @param sort vy what we want to sort
+     * @return Set of companies
+     */
     @Override
     public Set<Company> get(int page, int perPage, String sort) {
         PreparedStatement preparedStatement = null;
@@ -99,6 +120,13 @@ public class CompanyDAOImpl extends ConnectToDb implements CompanyDAO {
         }
         return companySet;
     }
+
+    /**
+     *
+     * @param company we want to save
+     * @return saved company
+     * @throws SQLException for PreparedStatement
+     */
 
     @Override
     public Company save(Company company) throws SQLException {
@@ -128,6 +156,14 @@ public class CompanyDAOImpl extends ConnectToDb implements CompanyDAO {
         }
         return company1;
     }
+
+    /**
+     *
+     * @param company company we want to update
+     * @return updated Company
+     * @throws SQLException for PreparedStatement
+     * @throws NotFoundException id that company does not exist
+     */
 
     @Override
     public Company update(Company company) throws SQLException, NotFoundException {
@@ -170,6 +206,11 @@ public class CompanyDAOImpl extends ConnectToDb implements CompanyDAO {
         return company1;
     }
 
+    /**
+     *
+     * @param companyId id we want  to update
+     * @throws SQLException for preparedStatement
+     */
     @Override
     public void delete(int companyId) throws SQLException {
         String sql = "delete from company where id = ?";

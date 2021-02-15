@@ -1,10 +1,8 @@
-package com.bdg.homework4.service;
+package com.bdg.homework4.dao.impl;
 
 import com.bdg.homework4.dao.PassengerDAO;
-import com.bdg.homework4.entity.Company;
 import com.bdg.homework4.entity.Passenger;
-import com.bdg.homework4.entity.Trip;
-import com.bdg.homework4.service.exception.NotFoundException;
+import com.bdg.homework4.exception.NotFoundException;
 import com.bdg.homework4.utils.connect.ConnectToDb;
 
 import java.sql.*;
@@ -12,10 +10,20 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+/**
+ * this class is responsible for crud operations with Passenger entity
+ */
 
 public class PassengerDAOImpl extends ConnectToDb implements PassengerDAO {
     Connection connection = getConnection();
 
+    /**
+     *
+     * @param id by this param we can find and get Passenger
+     * @return passenger that we found
+     * @throws SQLException for PreparedStatement
+     * @throws NotFoundException if incorrect id we pass
+     */
     @Override
     public Passenger getById(int id) throws SQLException,NotFoundException{
         PreparedStatement preparedStatement = null;
@@ -47,6 +55,11 @@ public class PassengerDAOImpl extends ConnectToDb implements PassengerDAO {
         return passenger;
     }
 
+    /**
+     *
+     * @return list of Passengers
+     * @throws SQLException for PreparedStatement
+     */
     @Override
     public Set<Passenger> getAll() throws SQLException{
         Set<Passenger> passengerSet = new HashSet<>();
@@ -77,6 +90,13 @@ public class PassengerDAOImpl extends ConnectToDb implements PassengerDAO {
         }
         return passengerSet;
     }
+    /**
+     *
+     * @param page count started which we we will get Passengers
+     * @param perPage this is count we want to see
+     * @param sort vy what we want to sort
+     * @return Set of companies
+     */
 
     @Override
     public Set<Passenger> get(int page, int perPage, String sort) {
@@ -104,6 +124,12 @@ public class PassengerDAOImpl extends ConnectToDb implements PassengerDAO {
         return passengerSet;
     }
 
+    /**
+     *
+     * @param passenger we want to save
+     * @return saved passenger
+     * @throws SQLException for PreparedStatement
+     */
     @Override
     public Passenger save(Passenger passenger) throws SQLException{
         PreparedStatement preparedStatement = null;
@@ -137,6 +163,12 @@ public class PassengerDAOImpl extends ConnectToDb implements PassengerDAO {
         return passenger1;
     }
 
+    /**
+     *
+     * @param  id we want  to update
+     * @throws SQLException for preparedStatement
+     */
+
     @Override
     public void delete(int id) throws SQLException {
         PreparedStatement preparedStatement = null;
@@ -157,7 +189,12 @@ public class PassengerDAOImpl extends ConnectToDb implements PassengerDAO {
         }
     }
 
-
+    /**
+     *
+     * @param tripNumber
+     * @return
+     * @throws SQLException
+     */
     @Override
     public List<Passenger> getPassengersOfTrip(int tripNumber) throws SQLException {
        List<Passenger> passengerList = new ArrayList<>();

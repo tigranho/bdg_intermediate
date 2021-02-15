@@ -1,8 +1,9 @@
 package com.bdg.homework4.service;
 
 import com.bdg.homework4.dao.PassengerDAO;
+import com.bdg.homework4.dao.impl.PassengerDAOImpl;
 import com.bdg.homework4.entity.Passenger;
-import com.bdg.homework4.service.exception.NotFoundException;
+import com.bdg.homework4.exception.NotFoundException;
 import org.junit.Assert;
 import org.junit.Test;
 

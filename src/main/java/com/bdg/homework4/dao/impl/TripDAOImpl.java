@@ -1,20 +1,29 @@
-package com.bdg.homework4.service;
+package com.bdg.homework4.dao.impl;
 
 import com.bdg.homework4.dao.TripDAO;
 import com.bdg.homework4.entity.Company;
 import com.bdg.homework4.entity.Trip;
-import com.bdg.homework4.service.exception.NotFoundException;
+import com.bdg.homework4.exception.NotFoundException;
 import com.bdg.homework4.utils.connect.ConnectToDb;
 
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
+/**
+ * this class is responsible for crud operations with Trip entity
+ */
 public class TripDAOImpl extends ConnectToDb implements TripDAO {
     Connection connection = getConnection();
 
+    /**
+     *
+     * @param id by this param we can find and get Trip
+     * @return trip that we found
+     * @throws SQLException for PreparedStatement
+     * @throws NotFoundException if incorrect id we pass
+     */
 
     @Override
     public Trip getById(int id) throws SQLException{
@@ -58,6 +67,11 @@ public class TripDAOImpl extends ConnectToDb implements TripDAO {
         return trip;
     }
 
+    /**
+     *
+     * @return list of Trips
+     * @throws SQLException for PreparedStatement
+     */
     @Override
     public Set<Trip> getAll() throws SQLException {
         Set<Trip> tripSet = new HashSet<>();
@@ -103,6 +117,13 @@ public class TripDAOImpl extends ConnectToDb implements TripDAO {
         }
         return tripSet;
     }
+    /**
+     *
+     * @param page count started which we we will get Trips
+     * @param perPage this is count we want to see
+     * @param sort vy what we want to sort
+     * @return Set of trips
+     */
 
     @Override
     public Set<Trip> get(int page, int perPage, String sort) throws SQLException{
@@ -150,6 +171,12 @@ public class TripDAOImpl extends ConnectToDb implements TripDAO {
         }
         return tripSet;
     }
+    /**
+     *
+     * @param trip we want to save
+     * @return saved trip
+     * @throws SQLException for PreparedStatement
+     */
 
     @Override
     public Trip save(Trip trip) throws SQLException{
@@ -198,6 +225,13 @@ public class TripDAOImpl extends ConnectToDb implements TripDAO {
         }
         return trip1;
     }
+
+    /**
+     *
+     * @param trip trip which will be updated
+     * @return updated trip
+     * @throws SQLException for
+     */
 
     @Override
     public Trip update(Trip trip) throws SQLException {
@@ -251,6 +285,11 @@ public class TripDAOImpl extends ConnectToDb implements TripDAO {
         return trip1;
     }
 
+    /**
+     *
+     * @param  tripId we want  to update
+     * @throws SQLException for preparedStatement
+     */
     @Override
     public void delete(int tripId) throws SQLException {
         String sql = "delete from trip where id = ?";
