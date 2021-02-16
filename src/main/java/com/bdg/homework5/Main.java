@@ -1,9 +1,13 @@
 package com.bdg.homework5;
 
 import com.bdg.homework5.dao.AddressDAO;
+import com.bdg.homework5.dao.CompanyDAO;
 import com.bdg.homework5.dao.PassengerDAO;
+import com.bdg.homework5.dao.TripDAO;
 import com.bdg.homework5.dao.impl.AddressDAOImpl;
+import com.bdg.homework5.dao.impl.CompanyDAOImpl;
 import com.bdg.homework5.dao.impl.PassengerDAOImpl;
+import com.bdg.homework5.dao.impl.TripDAOImpl;
 import com.bdg.homework5.entity.Address;
 import com.bdg.homework5.entity.Company;
 import com.bdg.homework5.entity.Passenger;
@@ -23,25 +27,9 @@ import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
-        EntityManagerFactory  emf = Persistence.createEntityManagerFactory("Hibernate_JPA");
-        EntityManager entityManager = emf.createEntityManager();
-        EntityTransaction   transaction = entityManager.getTransaction();
-            transaction.begin();
-            Trip trip = new Trip();
-            trip.setTime_in(Timestamp.valueOf("2017-11-15 15:30:14.332"));
-            trip.setTime_out(Timestamp.valueOf("2017-11-15 20:30:14.332"));
-            trip.setTown_from("London");
-            trip.setTown_to("Liverpool");
-            //trip.setCompany(new Company("AviaLine", Date.valueOf("2017-11-15")));
-            Company company = new Company("Avialine", Date.valueOf("2017-11-15"));
-            company.addTrip(trip);
-            entityManager.persist(company);
-            transaction.commit();
-
-            transaction.rollback();
-
-            entityManager.close();
-            emf.close();
+        CompanyDAO companyDAO = new CompanyDAOImpl();
+        Company company = new Company("Avialine15", Date.valueOf("2017-11-15"));
+        company.setId(4);
 
     }
 }
@@ -74,6 +62,28 @@ public class Main {
             entityManager.close();
             emf.close();
         }
+        *
+        * transaction.begin();
+            Trip trip = new Trip();
+            trip.setTime_in(Timestamp.valueOf("2017-11-15 15:30:14"));
+            trip.setTime_out(Timestamp.valueOf("2017-11-15 20:30:14"));
+            trip.setTown_from("London");
+            trip.setTown_to("Liverpool");
+            trip.setCompany(new Company("AviaLine", Date.valueOf("2017-11-15")));
+            Company company = new Company("Avialine", Date.valueOf("2017-11-15"));
+            company.addTrip(trip);
+            entityManager.persist(company);
     }
     *
+    *  Trip trip = new Trip();
+        trip.setId(7);
+        trip.setTime_in(Timestamp.valueOf("2017-11-15 15:30:14"));
+        trip.setTime_out(Timestamp.valueOf("2017-11-15 20:30:14"));
+        trip.setTown_from("Tehran2");
+        trip.setTown_to("Moscow2");
+        Company company = new Company();
+        company.setId(3);
+        trip.setCompany(company);
+        Trip trip1 = tripDAO.update(trip);
+        System.out.println(trip1.toString());
     */

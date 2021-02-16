@@ -3,7 +3,6 @@ package com.bdg.homework5.dao.impl;
 import com.bdg.homework5.dao.PassengerDAO;
 import com.bdg.homework5.entity.Address;
 import com.bdg.homework5.entity.Passenger;
-import com.bdg.homework5.exception.NotFoundException;
 
 import javax.persistence.*;
 import java.util.List;

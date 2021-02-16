@@ -8,11 +8,19 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * this class is responsible for doing some crud operations with Address entity
+ *
+ */
 public class AddressDAOImpl implements AddressDAO {
     EntityManagerFactory emf = null;
     EntityManager entityManager = null;
     EntityTransaction transaction = null;
 
+    /**
+     * @param id by the given id we can found the Address
+     * @return Passenger that we found in our DB
+     */
     @Override
     public Address getById(int id) {
           Address address = null;
@@ -33,7 +41,10 @@ public class AddressDAOImpl implements AddressDAO {
         }
         return address;
     }
-
+    /**
+     *
+     * @return all addresses in db
+     */
 
     @Override
     public List<Address> getAll() {
@@ -56,6 +67,11 @@ public class AddressDAOImpl implements AddressDAO {
         return addressList;
     }
 
+    /**
+     *
+     * @param address this address include inside also passengerSet
+     * @return saved address
+     */
     @Override
     public Address save(Address address) {
         EntityManagerFactory emf = null;
@@ -81,6 +97,10 @@ public class AddressDAOImpl implements AddressDAO {
         }
         return address1;
     }
+    /**
+     *
+     * @param id responsible for deleting the address by given id
+     */
 
     @Override
     public void delete(int id) {

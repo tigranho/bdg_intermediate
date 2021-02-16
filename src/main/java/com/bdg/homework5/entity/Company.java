@@ -23,7 +23,7 @@ public class Company {
     //@Temporal(TemporalType.DATE)
     Date dateOfFound;
 
-    @OneToMany(mappedBy = "trip",
+    @OneToMany(mappedBy = "company",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     Set<Trip> tripSet = new HashSet<>();
@@ -76,5 +76,15 @@ public class Company {
     public Company(String name, Date date) {
         this.name = name;
         this.dateOfFound = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "Id=" + Id +
+                ", name='" + name + '\'' +
+                ", dateOfFound=" + dateOfFound +
+                ", tripSet=" + tripSet +
+                '}';
     }
 }

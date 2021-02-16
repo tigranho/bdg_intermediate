@@ -87,4 +87,16 @@ public class Trip {
     public void setCompany(Company company) {
         this.company = company;
     }
+
+    @Override
+    public String toString() {
+        return "Trip{" +
+                "Id=" + Id +
+                ", time_in=" + time_in +
+                ", time_out=" + time_out +
+                ", town_from='" + town_from + '\'' +
+                ", town_to='" + town_to + '\'' +
+                ", company=" + company.getName() + "company_id = " + company.getId()+
+                '}';
+    }
 }
