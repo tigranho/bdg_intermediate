@@ -20,7 +20,7 @@ class AddressServiceImplTest {
 
 
     @Test
-    @Order(1)
+    @Order(2)
     void getById() throws AddressException {
         Address byId = addressService.getById(addressId);
         Assertions.assertNotNull(byId);

@@ -11,16 +11,6 @@ import com.bdg.homework.jdbc.airport.model.Passenger;
 public class Main {
 
     public static void main(String[] args) {
-        PassengerController controller= new PassengerController();
-        Address address= new Address("Yerevan","Armenia");
-        Passenger passenger= new Passenger("Poxosopoxosyan","",address);
-        try {
-            controller.save(passenger);
-        } catch (PassengerException e) {
-            e.printStackTrace();
-        }
-
-
     }
 
 
