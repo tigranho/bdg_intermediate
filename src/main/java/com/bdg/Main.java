@@ -13,6 +13,8 @@ public class Main {
     private String test;
 
     public static void main(String[] args) {
+
+        System.out.println("test");
     }
 
 
