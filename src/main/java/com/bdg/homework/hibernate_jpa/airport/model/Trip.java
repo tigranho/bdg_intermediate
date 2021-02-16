@@ -1,9 +1,14 @@
 package com.bdg.homework.hibernate_jpa.airport.model;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "trip")
 public class Trip implements Comparable<Trip> {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tripNumber;
     private Company company;
     private LocalDateTime timeIn;
