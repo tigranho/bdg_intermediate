@@ -1,7 +1,7 @@
 package com.bdg.airport_system_JPA.dao;
 
-import com.bdg.airport_system.model.Passenger;
-import com.bdg.airport_system.model.Trip;
+import com.bdg.airport_system_JPA.model.Passenger;
+import com.bdg.airport_system_JPA.model.Trip;
 
 import java.util.List;
 import java.util.Set;
@@ -14,8 +14,5 @@ public interface PassengerDao {
     Passenger save(Passenger passenger);
     Passenger update(Passenger passenger, long passengerId);
     void delete(long passengerId);
-    List<Passenger> getPassengersOfTrip(long tripNumber);
-    void registerTrip(Trip trip, Passenger passenger);
-    void cancelTrip(long passengerId, long tripNumber);
     void writePassengersFromFileToDB();
 }

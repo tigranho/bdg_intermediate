@@ -104,12 +104,13 @@ public class AddressDaoImpl implements AddressDao {
     public void writeAddressFromFileIntoDB() {
         entityManager.getTransaction().begin();
         List<String> addressList = fromFileToList(ReadFile.PASSENGERS_PATH);;
-        Address address = new Address();
+
 
 
 
         try {
             for (int i = 1; i < addressList.size(); i++) {
+                Address address = new Address();
                 String[] temp = addressList.get(i).split(",");
                 address.setCountry(temp[2]);
                 address.setCity(temp[3]);
@@ -117,11 +118,13 @@ public class AddressDaoImpl implements AddressDao {
 
                 entityManager.persist(address);
 
+
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            entityManager.getTransaction().commit();
 
             entityManager.close();
             entityManagerFactory.close();

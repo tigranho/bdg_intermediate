@@ -20,12 +20,17 @@ public class Passenger {
     private String name;
     @Column
     private String phone;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
-    public Passenger(String name, String phone, Address address) {
-        this.name = name;
-        this.phone = phone;
-        this.address = address;
+    @Override
+    public String toString() {
+        return "Passenger { " +
+                "id: " + id +
+                ", name: " + name +
+                ", phone: " + phone +
+                ", address: " + address +
+                " }";
     }
+
 }

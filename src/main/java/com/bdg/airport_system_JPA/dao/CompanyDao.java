@@ -1,6 +1,6 @@
 package com.bdg.airport_system_JPA.dao;
 
-import com.bdg.airport_system.model.Company;
+import com.bdg.airport_system_JPA.model.Company;
 
 import java.util.Set;
 

@@ -1,6 +1,6 @@
 package com.bdg.airport_system_JPA.dao.dao_impl;
 
-import com.bdg.airport_system.model.Company;
+import com.bdg.airport_system_JPA.model.Company;
 import com.bdg.airport_system_JPA.dao.CompanyDao;
 import com.bdg.airport_system_JPA.util.ReadFile;
 
@@ -11,7 +11,6 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -113,13 +112,14 @@ public class CompanyDaoImpl implements CompanyDao {
 
     @Override
     public void writeCompanyFromFileIntoDB() {
-        company = new Company();
+
         List<String> companyList = fromFileToList(ReadFile.COMPANIES_PATH);
 
         entityManager.getTransaction().begin();
         try {
             for (int i = 1; i < companyList.size(); i++) {
 
+                Company company = new Company();
                 String[] companiesArray = companyList.get(i).split(",");
                 String[] dates = companiesArray[1].split("/");
 
@@ -136,6 +136,8 @@ public class CompanyDaoImpl implements CompanyDao {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            entityManager.getTransaction().commit();
+
             entityManager.close();
             entityManagerFactory.close();
         }

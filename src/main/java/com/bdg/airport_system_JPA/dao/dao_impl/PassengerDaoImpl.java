@@ -1,7 +1,7 @@
 package com.bdg.airport_system_JPA.dao.dao_impl;
 
-import com.bdg.airport_system.model.Passenger;
-import com.bdg.airport_system.model.Trip;
+import com.bdg.airport_system_JPA.model.Passenger;
+import com.bdg.airport_system_JPA.model.Trip;
 import com.bdg.airport_system_JPA.dao.PassengerDao;
 import com.bdg.airport_system_JPA.model.Address;
 import com.bdg.airport_system_JPA.util.ReadFile;
@@ -108,30 +108,17 @@ public class PassengerDaoImpl implements PassengerDao {
         }
     }
 
-    @Override
-    public List<Passenger> getPassengersOfTrip(long tripNumber) {
-        return null;
-    }
-
-    @Override
-    public void registerTrip(Trip trip, Passenger passenger) {
-
-    }
-
-    @Override
-    public void cancelTrip(long passengerId, long tripNumber) {
-
-    }
 
     @Override
     public void writePassengersFromFileToDB() {
-        passenger = new Passenger();
+
         List<String> passengersList = fromFileToList(ReadFile.PASSENGERS_PATH);
 
         entityManager.getTransaction().begin();
 
         try {
             for (int i = 1; i < passengersList.size(); i++) {
+                passenger = new Passenger();
                 String[] passengersArray = passengersList.get(i).split(",");
                 passenger.setName(passengersArray[0]);
                 passenger.setPhone(passengersArray[1]);
@@ -139,6 +126,7 @@ public class PassengerDaoImpl implements PassengerDao {
                 Address address = new Address();
                 address.setCity(passengersArray[3]);
                 address.setCountry(passengersArray[2]);
+                passenger.setAddress(address);
 
                 entityManager.persist(passenger);
 
@@ -146,6 +134,8 @@ public class PassengerDaoImpl implements PassengerDao {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+
+            entityManager.getTransaction().commit();
             entityManager.close();
             entityManagerFactory.close();
         }

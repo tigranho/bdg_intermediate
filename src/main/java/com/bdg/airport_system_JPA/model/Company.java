@@ -21,4 +21,12 @@ public class Company {
     private String name;
     @Column(name = "founding_date")
     private LocalDate foundingDate;
+
+    @Override
+    public String toString() {
+        return "Company { " +
+                "name: " + name +
+                ", foundingDate: " + foundingDate +
+                " }";
+    }
 }

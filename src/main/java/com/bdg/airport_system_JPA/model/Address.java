@@ -25,4 +25,13 @@ public class Address {
         this.city = town;
         this.country = country;
     }
+
+    @Override
+    public String toString() {
+        return "Address { " +
+                "id: " + id +
+                ", city: " + city +
+                ", country: " + country +
+                " }";
+    }
 }

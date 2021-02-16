@@ -1,6 +1,6 @@
 package com.bdg.airport_system_JPA.dao.dao_impl;
 
-import com.bdg.airport_system.model.Trip;
+import com.bdg.airport_system_JPA.model.Trip;
 import com.bdg.airport_system_JPA.dao.TripDao;
 
 import java.util.List;

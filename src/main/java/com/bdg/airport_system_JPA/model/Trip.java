@@ -18,7 +18,7 @@ public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Company company;
     @Column(name = "time_in")
     private LocalDateTime timeIn;
@@ -35,5 +35,16 @@ public class Trip {
         this.timeOut = timeOut;
         this.townTo = townTo;
         this.townFrom = townFrom;
+    }
+
+    @Override
+    public String toString() {
+        return "Trip { " +
+                " company: " + company +
+                ", timeIn: " + timeIn +
+                ", timeOut: " + timeOut +
+                ", townTo: " + townTo +
+                ", townFrom: " + townFrom +
+                " }";
     }
 }
