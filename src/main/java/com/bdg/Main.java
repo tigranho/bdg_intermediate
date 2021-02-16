@@ -10,6 +10,8 @@ import com.bdg.homework.jdbc.airport.model.Passenger;
  */
 public class Main {
 
+    private String test;
+
     public static void main(String[] args) {
     }
 
