@@ -5,6 +5,8 @@ import java.util.Set;
 public class Passenger {
     private String name;
     private int phoneNumber;
+    private String vountry;
+    private String city;
    // private Address address;
    // private Set<Trip> trips ;
     private int id;

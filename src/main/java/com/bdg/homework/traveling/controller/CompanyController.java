@@ -3,6 +3,7 @@ package com.bdg.homework.traveling.controller;
 import com.bdg.homework.traveling.dataObjAc.daoImpl.CompanyDaoImpl;
 import com.bdg.homework.traveling.dataObjAc.daoInterfaces.CompanyDao;
 import com.bdg.homework.traveling.model.Company;
+import com.bdg.homework.traveling.utils.CompanyFileReader;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -28,6 +29,9 @@ public class CompanyController {
         companyDao.update( company2,3);
         Set<Company> currentList=companyDao.getAll();
         System.out.print(currentList);
+	
+	
+		//CompanyFileReader.readListOfCompany("src/main/java/com/bdg/homework/traveling/utils/res/companies.txt");
 
 
     }

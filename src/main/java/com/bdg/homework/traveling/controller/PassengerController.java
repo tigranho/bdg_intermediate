@@ -3,6 +3,7 @@ package com.bdg.homework.traveling.controller;
 import com.bdg.homework.traveling.dataObjAc.daoImpl.PassengersDaoImpl;
 import com.bdg.homework.traveling.dataObjAc.daoInterfaces.PassengersDao;
 import com.bdg.homework.traveling.model.Passenger;
+import com.bdg.homework.traveling.utils.PassengerFileReader;
 
 public class PassengerController {
     static final PassengersDao passengersDao = new PassengersDaoImpl();
@@ -14,6 +15,7 @@ public class PassengerController {
         Passenger passenger1=  passengersDao.save(passenger);
         System.out.println(passenger1);
         passengersDao.update(passenger2,1);
+		PassengerFileReader.readListOfPassenger("src/main/java/com/bdg/homework/traveling/utils/res/passengers.txt");
 
     }
 }

@@ -6,6 +6,7 @@ import com.bdg.homework.traveling.model.Address;
 import com.bdg.homework.traveling.model.Company;
 
 import java.sql.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
