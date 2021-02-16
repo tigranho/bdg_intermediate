@@ -20,7 +20,11 @@ public class Passenger {
     private String name;
     @Column
     private String phone;
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumns(value = {
+            @JoinColumn(name = "pass_city", referencedColumnName = "city"),
+            @JoinColumn(name = "pass_country", referencedColumnName = "country")
+    })
     private Address address;
 
     @Override

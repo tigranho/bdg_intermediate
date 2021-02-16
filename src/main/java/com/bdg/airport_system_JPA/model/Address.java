@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "address")
@@ -20,6 +22,9 @@ public class Address {
     private String city;
     @Column
     private String country;
+
+    @OneToMany(targetEntity = Passenger.class, mappedBy = "address", cascade = CascadeType.ALL)
+    private Set<Passenger> passengerSet = new HashSet<>();
 
     public Address(String town, String country) {
         this.city = town;
