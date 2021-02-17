@@ -1,4 +1,4 @@
-package com.bdg.airport_jpa.jpaDao;
+package com.bdg.airport_jpa.jpa_dao;
 
 import com.bdg.airport_jpa.model.Address;
 

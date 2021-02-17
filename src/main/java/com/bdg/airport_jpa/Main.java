@@ -1,18 +1,7 @@
 package com.bdg.airport_jpa;
 
-import com.bdg.airport_jpa.jpaDaoImpl.AddressDaoImpl;
-import com.bdg.airport_jpa.jpaDaoImpl.PassengerDaoImpl;
-import com.bdg.airport_jpa.model.Address;
-import com.bdg.airport_jpa.model.Company;
-import com.bdg.airport_jpa.model.Passenger;
-import com.bdg.airport_jpa.util.ReadFromFile;
-import org.hibernate.Session;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import java.time.LocalDate;
-import java.util.List;
+import com.bdg.airport_jpa.jpa_daoImpl.AddressDaoImpl;
+import com.bdg.airport_jpa.jpa_daoImpl.PassengerDaoImpl;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,7 +16,7 @@ public class Main {
 //        list.forEach(System.out::println);
 //        Address address=new Address("Hungarya","Buxarest");
 //        passengerDao.persist(new Passenger("Artur","094230081",address));
-          ReadFromFile readFromFile=new ReadFromFile();
-          readFromFile.addAddressToDb(ReadFromFile.readFile(ReadFromFile.PATH_PASSENGERS));
+//          ReadFromFile readFromFile=new ReadFromFile();
+//          readFromFile.addAddressToDb(ReadFromFile.readFile(ReadFromFile.PATH_PASSENGERS));
     }
 }

@@ -1,7 +1,6 @@
 package com.bdg.airport_jpa.util;
 
 import com.bdg.airport.util.ReadDataFromFile;
-import com.bdg.airport_jpa.jpaDaoImpl.AddressDaoImpl;
 import com.bdg.airport_jpa.model.Address;
 
 import javax.persistence.EntityManager;

@@ -1,6 +1,6 @@
-package com.bdg.airport_jpa.jpaDaoImpl;
+package com.bdg.airport_jpa.jpa_daoImpl;
 
-import com.bdg.airport_jpa.jpaDao.PassengerDao;
+import com.bdg.airport_jpa.jpa_dao.PassengerDao;
 import com.bdg.airport_jpa.model.Passenger;
 
 import javax.persistence.EntityManager;
