@@ -11,7 +11,7 @@ public class Passenger extends PrimaryKey implements Comparable<Passenger> {
     private String name;
     @Column(name = "phone")
     private String phone;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
@@ -55,5 +55,14 @@ public class Passenger extends PrimaryKey implements Comparable<Passenger> {
     @Override
     public int compareTo(Passenger o) {
         return getId() - o.getId();
+    }
+
+    @Override
+    public String toString() {
+        return "Passenger{" +
+                "name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address=" + address +
+                '}';
     }
 }
