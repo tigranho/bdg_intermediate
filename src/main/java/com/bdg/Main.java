@@ -1,5 +1,6 @@
 package com.bdg;
 
+import com.bdg.homework.hibernate_jpa.airport.configuration.HibernateUtil;
 import com.bdg.homework.jdbc.airport.controller.PassengerController;
 import com.bdg.homework.jdbc.airport.excpetions.impl.PassengerException;
 import com.bdg.homework.jdbc.airport.model.Address;
@@ -14,7 +15,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("java progrmming");
+        HibernateUtil.entityManager().getTransaction().begin();
+
     }
 
 

@@ -1,7 +1,11 @@
 package com.bdg.homework.hibernate_jpa.airport.model;
 
-public class Address {
-    private int id;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "address")
+public class Address extends PrimaryKey {
     private String city;
     private String country;
 
@@ -12,14 +16,6 @@ public class Address {
     public Address( String city, String country) {
         this.city = city;
         this.country = country;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getCity() {
@@ -38,12 +34,5 @@ public class Address {
         this.country = country;
     }
 
-    @Override
-    public String toString() {
-        return "Address{" +
-                "id=" + id +
-                ", city=" + city +
-                ", country=" + country +
-                '}';
-    }
+
 }

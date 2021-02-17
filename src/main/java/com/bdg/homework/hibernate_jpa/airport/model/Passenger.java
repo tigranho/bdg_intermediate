@@ -4,16 +4,15 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "passenger")
-public class Passenger implements Comparable<Passenger> {
+public class Passenger extends PrimaryKey implements Comparable<Passenger> {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+
     @Column(name = "name")
     private String name;
     @Column(name = "phone")
     private String phone;
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
 
@@ -21,20 +20,12 @@ public class Passenger implements Comparable<Passenger> {
 
     }
 
-
     public Passenger(String name, String phone, Address address) {
         this.name = name;
         this.phone = phone;
         this.address = address;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -60,18 +51,9 @@ public class Passenger implements Comparable<Passenger> {
         this.address = address;
     }
 
-    @Override
-    public String toString() {
-        return "Passenger{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address=" + address +
-                '}';
-    }
 
     @Override
     public int compareTo(Passenger o) {
-        return id - o.id;
+        return getId() - o.getId();
     }
 }

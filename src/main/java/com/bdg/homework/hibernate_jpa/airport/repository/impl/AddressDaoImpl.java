@@ -1,10 +1,7 @@
 package com.bdg.homework.hibernate_jpa.airport.repository.impl;
 
-import com.bdg.homework.hibernate_jpa.airport.configuration.DbConnection;
 import com.bdg.homework.hibernate_jpa.airport.model.Address;
 import com.bdg.homework.hibernate_jpa.airport.repository.AddressDao;
-
-import java.sql.*;
 
 public class AddressDaoImpl implements AddressDao {
 

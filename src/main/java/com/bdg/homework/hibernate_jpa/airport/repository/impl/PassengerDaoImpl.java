@@ -1,15 +1,11 @@
 package com.bdg.homework.hibernate_jpa.airport.repository.impl;
 
-import com.bdg.homework.hibernate_jpa.airport.configuration.DbConnection;
 import com.bdg.homework.hibernate_jpa.airport.model.Passenger;
 import com.bdg.homework.hibernate_jpa.airport.model.Trip;
-import com.bdg.homework.hibernate_jpa.airport.repository.AddressDao;
 import com.bdg.homework.hibernate_jpa.airport.repository.PassengerDao;
 
-import java.sql.*;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class PassengerDaoImpl implements PassengerDao {
 
