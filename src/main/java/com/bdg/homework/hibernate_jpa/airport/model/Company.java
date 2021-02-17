@@ -2,16 +2,18 @@ package com.bdg.homework.hibernate_jpa.airport.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "company")
-public class Company implements Comparable<Company> {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  int id;
+public class Company extends PrimaryKey implements Comparable<Company> {
+
     @Column(name = "name")
     private String name;
+    @Column(name = "found_date")
     private LocalDate foundingDate;
+    @OneToMany(mappedBy = "company",fetch = FetchType.LAZY)
+    private Set<Trip> trips;
 
     public Company() {
 
@@ -38,13 +40,7 @@ public class Company implements Comparable<Company> {
         this.foundingDate = foundingDate;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Override
     public String toString() {

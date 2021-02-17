@@ -10,6 +10,8 @@ public class Trip implements Comparable<Trip> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tripNumber;
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id")
     private Company company;
     private LocalDateTime timeIn;
     private LocalDateTime timeOut;
