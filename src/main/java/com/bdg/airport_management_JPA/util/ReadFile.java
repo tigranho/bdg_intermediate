@@ -1,4 +1,4 @@
-package com.bdg.airport_management_system.model.util;
+package com.bdg.airport_management_JPA.util;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadFromFile {
+public class ReadFile {
 
     public static final String COMPANIES_PATH = "D:\\\\Users\\\\DANIL\\\\Desktop\\\\homework(JDBC) (1).txt";
 
@@ -22,5 +22,3 @@ public class ReadFromFile {
         return listFromFile;
     }
 }
-
-
